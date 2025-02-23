@@ -1,9 +1,9 @@
 function back2lastdoc (href){
     if (history.length > 1) window.history.go(-1);
-    else window.location.href = "https://iamyukino.cn/rec/" + href + "/";
+    else window.location.href = "/rec/" + href + "/";
 }
 function loadmd (name){
-    let modulesPath = "../../index/wp-content/rec/live2d/models/"
+    let modulesPath = "/index/wp-content/rec/live2d/models/"
 	let modelNames = [name]
 	loadModel(modulesPath, modelNames);
 }

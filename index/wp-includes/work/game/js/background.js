@@ -31,5 +31,5 @@
 
   function back2lastdoc (){
     if (history.length > 1) window.history.go(-1);
-    else window.location.href = 'https://iamyukino.cn/';
+    else window.location.href = '/';
 }

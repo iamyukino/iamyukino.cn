@@ -8,31 +8,34 @@
     <title>エラー! - iamyukino.cn</title>
     <style>
         * {
-            cursor: url("https://iamyukino.cn/index/wp-content/global/images/mouse.png"), auto;
+            cursor: url("/index/wp-content/global/images/mouse.png"), auto;
         }
     </style>
-    <link rel="shortcut icon" href="https://iamyukino.cn/index/wp-content/global/images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="https://iamyukino.cn/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
-    <script src="https://iamyukino.cn/index/wp-includes/index/js/jquery.min.js"></script>
-    <script src="https://iamyukino.cn/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
+    <link rel="shortcut icon" href="/index/wp-content/global/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
+    <script src="/index/wp-includes/index/js/jquery.min.js"></script>
+    <script src="/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
 
 </head>
 
 <body>
 
 <div id="pjaxContent">
-    <link rel="stylesheet" href="https://iamyukino.cn/index/wp-includes/err/404.css">
+    <link rel="stylesheet" href="/index/wp-includes/err/404.css">
     <script>
-        var patt1 = /^(https?:\/\/)?iamyukino\.github\.io\/((zh)(\-(TW|CHS|SG|CHT|HK|MO))?|cn)$/;
-        var patt2 = /^(https?:\/\/)?iamyukino\.github\.io\/((ja|ko|en)(\-[A-Z]{2,3})?|jp|us)$/;
-        if (patt1.test(window.location.href))
-            window.location.href='https://iamyukino.cn/zh-CN';
+        var patto = /^(?:https?:\/\/[^/]+)?\/zh-CN(?=\/|$|\?|#)/;
+        var patt1 = /^(?:https?:\/\/[^/]+)?\/(zh((-|_)(TW|CHS|SG|CHT|HK|MO|CN))?)(?=\/|$|\?|#)/i;
+        var patt2 = /^(?:https?:\/\/[^/]+)?\/((ja|ko|en)((-|_)[A-Z]{2,3})?)(?=\/|$|\?|#)/i;
+        if (patto.test(window.location.href))
+            ;
+        else if (patt1.test(window.location.href))
+            window.location.href='/zh-CN';
         else if (patt2.test(window.location.href))
-            window.location.href='https://iamyukino.cn/';
+            window.location.href='/';
         
         function back2lastdoc (){
             if (history.length > 1) window.history.go(-1);
-            else window.location.href = 'https://iamyukino.cn/';
+            else window.location.href = '/';
         }
     </script>
     <div class="error-page">
@@ -42,10 +45,10 @@
             <h4 data-text="Page not found">Page not found</h4>
             <p>このアドレスに設定されているサイトには、要求されたファイルは含まれていません</p>
             <p>もしこれが問題だと思うのなら、バグを報告してください</p>
-            <p style="font-size:50%;"><br>All Rights Reserved. Copyright © 2023 iamYukino</p>
+            <p style="font-size:50%;"><br>All Rights Reserved. Copyright © 2025 iamYukino</p>
             <div class="btns">
                 <a onclick="back2lastdoc()">戻る</a>
-                <a href="https://iamyukino.cn/work/comment">報告問題</a>
+                <a href="/work/comment">報告問題</a>
             </div>
         </div>
     </div>
@@ -68,21 +71,21 @@
         </div>
     </div>
     <!-- Live2DCubismCore script -->
-    <script src="https://iamyukino.cn/index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
+    <script src="/index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
     <!-- Build script -->
-    <script src = "https://iamyukino.cn/index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
-    <script src="https://iamyukino.cn/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
+    <script src = "/index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
+    <script src="/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
     <script type="text/javascript">    
-        let modulesPath = "https://iamyukino.cn/index/wp-content/global/waifu/"
+        let modulesPath = "/index/wp-content/global/waifu/"
         let modelNames = ['TaoHua', 'mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
-        let waifuTipsUrl = "https://iamyukino.cn/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
+        let waifuTipsUrl = "/index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
         initModel(modulesPath, modelNames, waifuTipsUrl);
     </script>
 
     <!-- APlayer -->
-    <link rel="stylesheet" href="https://iamyukino.cn/index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
-    <script src="https://iamyukino.cn/index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="https://iamyukino.cn/index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="/index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="/index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="/index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
     <style>
         .aplayer .aplayer-lrc { height: 35px }
         .aplayer .aplayer-lrc p {

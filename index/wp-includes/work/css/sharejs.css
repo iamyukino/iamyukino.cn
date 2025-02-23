@@ -1,7 +1,7 @@
 @font-face {
     font-family: socialshare;
-    src: url(https://iamyukino.cn/index/wp-includes/work/fonts/sharejs/iconfont.eot);
-    src: url(https://iamyukino.cn/index/wp-includes/work/fonts/sharejs/iconfont.eot?#iefix) format("embedded-opentype"),url(https://iamyukino.cn/index/wp-includes/work/fonts/sharejs/iconfont.woff) format("woff"),url(https://iamyukino.cn/index/wp-includes/work/fonts/sharejs/iconfont.ttf) format("truetype"),url(https://iamyukino.cn/index/wp-includes/work/fonts/sharejs/iconfont.svg#iconfont) format("svg")
+    src: url(/index/wp-includes/work/fonts/sharejs/iconfont.eot);
+    src: url(/index/wp-includes/work/fonts/sharejs/iconfont.eot?#iefix) format("embedded-opentype"),url(/index/wp-includes/work/fonts/sharejs/iconfont.woff) format("woff"),url(/index/wp-includes/work/fonts/sharejs/iconfont.ttf) format("truetype"),url(/index/wp-includes/work/fonts/sharejs/iconfont.svg#iconfont) format("svg")
 }
 
 .social-share {

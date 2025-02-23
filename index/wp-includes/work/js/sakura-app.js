@@ -175,19 +175,19 @@ function imgError(ele, type) {
     switch (type) {
     case 1:
         if (ele.src.includes('https://cn.gravatar.com/avatar')) {
-            ele.src = ele.src.replace('https://cn.gravatar.com/avatar/', 'https://iamyukino.cn/index/wp-content/work/images/global/avatar.png')
+            ele.src = ele.src.replace('https://cn.gravatar.com/avatar/', '/index/wp-content/work/images/global/avatar.png')
         } else {
-            ele.src = 'https://iamyukino.cn/index/wp-content/work/images/global/avatar.png'
+            ele.src = '/index/wp-content/work/images/global/avatar.png'
         }
         break
     case 2:
-        ele.src = 'https://iamyukino.cn/index/wp-content/work/images/global/avatar.png'
+        ele.src = '/index/wp-content/work/images/global/avatar.png'
         break
     case 3:
-        ele.src = 'https://iamyukino.cn/index/wp-content/work/images/global/image-404.png'
+        ele.src = '/index/wp-content/work/images/global/image-404.png'
         break
     default:
-        ele.src = 'https://iamyukino.cn/index/wp-content/work/images/global/image-404.png'
+        ele.src = '/index/wp-content/work/images/global/image-404.png'
     }
 }
 mashiro_global.post_list_show_animation = new function() {
@@ -335,7 +335,7 @@ function attach_image() {
                         $('.insert-image-tips').html('<i class="fa fa-picture-o" aria-hidden="true"></i>')
                     }, 1000)
                     var get_the_url = res.data.url.replace('https://i.loli.net/', 'https://static.shino.cc/user-upload/')
-                    $('#upload-img-show').append('<img class="lazyload upload-image-preview" src="https://iamyukino.cn/index/wp-content/work/images/global/trans.ajax-spinner-preloader.svg" data-src="' + get_the_url + '" onclick="window.open(\'' + get_the_url + '\')" onerror="imgError(this)" />')
+                    $('#upload-img-show').append('<img class="lazyload upload-image-preview" src="/index/wp-content/work/images/global/trans.ajax-spinner-preloader.svg" data-src="' + get_the_url + '" onclick="window.open(\'' + get_the_url + '\')" onerror="imgError(this)" />')
                     lazyload()
                     addComment.createButterbar('图片上传成功~<br>Uploaded successfully~')
                     grin(res.data.url.replace('https://i.loli.net/', '{UPLOAD}'), type = 'Img')
@@ -442,7 +442,7 @@ function checkBgImgCookie() {
         $('#banner_wave_2').addClass('banner_wave_hide_fit_skin')
     }
     if (bgurl != '') {
-        if (bgurl == 'https://iamyukino.cn/index/wp-content/work/images/sakura/sakura.png' || bgurl == 'https://iamyukino.cn/index/wp-content/work/images/sakura/plaid.jpg' || bgurl == 'https://iamyukino.cn/index/wp-content/work/images/sakura/star.png' || bgurl == 'https://iamyukino.cn/index/wp-content/work/images/sakura/point.png' || bgurl == 'https://iamyukino.cn/index/wp-content/work/images/sakura/little-monster.png') {
+        if (bgurl == '/index/wp-content/work/images/sakura/sakura.png' || bgurl == '/index/wp-content/work/images/sakura/plaid.jpg' || bgurl == '/index/wp-content/work/images/sakura/star.png' || bgurl == '/index/wp-content/work/images/sakura/point.png' || bgurl == '/index/wp-content/work/images/sakura/little-monster.png') {
             mashiro_global.variables.skinSecter = true
             mashiro_global.variables.isNight = false
             $('#night-mode-cover').css('visibility', 'hidden')
@@ -467,49 +467,49 @@ function checkEffectsCookie() {
     var efurl = getCookie('sakuraEffectCookie')
     if (efurl) {
         var effect = document.createElement("script")
-        effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/sakura.js")
+        effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/sakura.js")
         effect.setAttribute("id", "sakura-effect")
         document.getElementsByTagName("body").item(0).appendChild(effect)
     }
     efurl = getCookie('snowyEffectCookie')
     if (efurl) {
         var effect = document.createElement("script")
-        effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/snow.js")
+        effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/snow.js")
         effect.setAttribute("id", "snow-effect")
         document.getElementsByTagName("body").item(0).appendChild(effect)
     }
     efurl = getCookie('linesEffectCookie')
     if (efurl) {
         var effect = document.createElement("script")
-        effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/line.js")
+        effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/line.js")
         effect.setAttribute("id", "line-effect")
         document.getElementsByTagName("body").item(0).appendChild(effect)
     }
     efurl = getCookie('beltsEffectCookie')
     if (efurl) {
         var effect = document.createElement("script")
-        effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/piao.js")
+        effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/piao.js")
         effect.setAttribute("id", "belt-effect")
         document.getElementsByTagName("body").item(0).appendChild(effect)
     }
     efurl = getCookie('wordsEffectCookie')
     if (efurl) {
         var effect = document.createElement("script")
-        effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/coderain.js")
+        effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/coderain.js")
         effect.setAttribute("id", "words-effect")
         document.getElementsByTagName("body").item(0).appendChild(effect)
     }
     efurl = getCookie('pointEffectCookie')
     if (efurl) {
         var effect = document.createElement("script")
-        effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/pointrain.js")
+        effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/pointrain.js")
         effect.setAttribute("id", "point-effect")
         document.getElementsByTagName("body").item(0).appendChild(effect)
     }
     efurl = getCookie('rainEffectCookie')
     if (efurl) {
         var effect = document.createElement("script")
-        effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/raindrop.js")
+        effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/raindrop.js")
         effect.setAttribute("id", "raindrop-effect")
         document.getElementsByTagName("body").item(0).appendChild(effect)
     }
@@ -559,11 +559,11 @@ $(document).ready(function() {
             setCookie('bgImgSetting', url, 30)
         })
     }
-    changeBG('#sakura-bg', 'https://iamyukino.cn/index/wp-content/work/images/sakura/sakura.png')
-    changeBG('#gribs-bg', 'https://iamyukino.cn/index/wp-content/work/images/sakura/plaid.jpg')
-    changeBG('#pixiv-bg', 'https://iamyukino.cn/index/wp-content/work/images/sakura/star.png')
-    changeBG('#KAdots-bg', 'https://iamyukino.cn/index/wp-content/work/images/sakura/point.png')
-    changeBG('#totem-bg', 'https://iamyukino.cn/index/wp-content/work/images/sakura/little-monster.png')
+    changeBG('#sakura-bg', '/index/wp-content/work/images/sakura/sakura.png')
+    changeBG('#gribs-bg', '/index/wp-content/work/images/sakura/plaid.jpg')
+    changeBG('#pixiv-bg', '/index/wp-content/work/images/sakura/star.png')
+    changeBG('#KAdots-bg', '/index/wp-content/work/images/sakura/point.png')
+    changeBG('#totem-bg', '/index/wp-content/work/images/sakura/little-monster.png')
     changeBGnoTrans('#bing-bg', 'https://api.btstu.cn/sjbz/api.php?lx=dongman')
     $('.skin-menu #white-bg').click(function() {
         mashiro_global.variables.skinSecter = false
@@ -581,7 +581,7 @@ $(document).ready(function() {
     $('.skin-menu #dark-bg').click(function() {
         mashiro_global.variables.skinSecter = true
         mashiro_global.variables.isNight = true
-        $('body').css('background-image', 'url(https://iamyukino.cn/index/wp-content/work/images/sakura/dark_bg9.jpg)')
+        $('body').css('background-image', 'url(/index/wp-content/work/images/sakura/dark_bg9.jpg)')
         $('.blank').css('background-color', 'rgba(255,255,255,.8)')
         $('#night-mode-cover').css('visibility', 'visible')
         $('.pattern-center').removeClass('pattern-center').addClass('pattern-center-sakura')
@@ -589,7 +589,7 @@ $(document).ready(function() {
         $('#banner_wave_1').addClass('banner_wave_hide_fit_skin')
         $('#banner_wave_2').addClass('banner_wave_hide_fit_skin')
         closeSkinMenu()
-        setCookie('bgImgSetting', 'https://iamyukino.cn/index/wp-content/work/images/sakura/dark_bg9.jpg', 30)
+        setCookie('bgImgSetting', '/index/wp-content/work/images/sakura/dark_bg9.jpg', 30)
     })
     $('.skin-menu #empty-effect').click(function() {
         sakuraEffectClear()
@@ -605,7 +605,7 @@ $(document).ready(function() {
         var effect = sakuraEffectClear()
         if (!effect) {
             effect = document.createElement("script")
-            effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/sakura.js")
+            effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/sakura.js")
             effect.setAttribute("id", "sakura-effect")
             document.getElementsByTagName("body").item(0).appendChild(effect)
             setCookie('sakuraEffectCookie', 'use', 30)
@@ -616,7 +616,7 @@ $(document).ready(function() {
         var effect = snowEffectClear()
         if (!effect) {
             effect = document.createElement("script")
-            effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/snow.js")
+            effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/snow.js")
             effect.setAttribute("id", "snow-effect")
             document.getElementsByTagName("body").item(0).appendChild(effect)
             setCookie('snowyEffectCookie', 'use', 30)
@@ -627,7 +627,7 @@ $(document).ready(function() {
         var effect = lineEffectClear()
         if (!effect) {
             effect = document.createElement("script")
-            effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/line.js")
+            effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/line.js")
             effect.setAttribute("id", "line-effect")
             document.getElementsByTagName("body").item(0).appendChild(effect)
             setCookie('linesEffectCookie', 'use', 30)
@@ -638,7 +638,7 @@ $(document).ready(function() {
         var effect = beltEffectClear()
         if (!effect) {
             effect = document.createElement("script")
-            effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/piao.js")
+            effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/piao.js")
             effect.setAttribute("id", "belt-effect")
             document.getElementsByTagName("body").item(0).appendChild(effect)
             setCookie('beltsEffectCookie', 'use', 30)
@@ -649,7 +649,7 @@ $(document).ready(function() {
         var effect = wordEffectClear()
         if (!effect) {
             effect = document.createElement("script")
-            effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/coderain.js")
+            effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/coderain.js")
             effect.setAttribute("id", "words-effect")
             document.getElementsByTagName("body").item(0).appendChild(effect)
             setCookie('wordsEffectCookie', 'use', 30)
@@ -660,7 +660,7 @@ $(document).ready(function() {
         var effect = pointEffectClear()
         if (!effect) {
             effect = document.createElement("script")
-            effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/pointrain.js")
+            effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/pointrain.js")
             effect.setAttribute("id", "point-effect")
             document.getElementsByTagName("body").item(0).appendChild(effect)
             setCookie('pointEffectCookie', 'use', 30)
@@ -671,7 +671,7 @@ $(document).ready(function() {
         var effect = rainEffectClear()
         if (!effect) {
             effect = document.createElement("script")
-            effect.setAttribute("src", "https://iamyukino.cn/index/wp-includes/work/cdn-cgi/sakura/raindrop.js")
+            effect.setAttribute("src", "/index/wp-includes/work/cdn-cgi/sakura/raindrop.js")
             effect.setAttribute("id", "raindrop-effect")
             document.getElementsByTagName("body").item(0).appendChild(effect)
             setCookie('rainEffectCookie', 'use', 30)

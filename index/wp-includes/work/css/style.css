@@ -6,7 +6,7 @@
 }
 
 #veditor {
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/comment/comment_bg.png);
+    background-image: url(/index/wp-content/work/images/comment/comment_bg.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -1304,15 +1304,15 @@ a:active,a:hover {
 }
 
 .loadvideo,.video-play {
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/main/play@32x32.png)
+    background-image: url(/index/wp-content/work/images/main/play@32x32.png)
 }
 
 .video-pause {
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/main/pause@32x32.png)
+    background-image: url(/index/wp-content/work/images/main/pause@32x32.png)
 }
 
 #video-add {
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/main/add@32x32.png);
+    background-image: url(/index/wp-content/work/images/main/add@32x32.png);
     bottom: 45px;
     display: none
 }
@@ -3371,7 +3371,7 @@ h1.page-title.mb- {
     height: 40px;
     text-align: center;
     line-height: 45px;
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/global/preloader.svg);
+    background-image: url(/index/wp-content/work/images/global/preloader.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto 100%
@@ -4307,7 +4307,7 @@ a.page-numbers {
 }
 
 .comment-respond textarea {
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/comment/comment_bg.png);
+    background-image: url(/index/wp-content/work/images/comment/comment_bg.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -4638,16 +4638,16 @@ li.feature-2 {
 }
 
 .headertop.filter-grid::before {
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/main/grid.png)
+    background-image: url(/index/wp-content/work/images/main/grid.png)
 }
 
 .headertop.filter-dot::before {
-    background-image: url(https://iamyukino.cn/index/wp-content/work/images/main/dot.gif)
+    background-image: url(/index/wp-content/work/images/main/dot.gif)
 }
 
 @media(max-width: 860px) {
     .headertop.filter-dot::before {
-        background-image:url(https://iamyukino.cn/index/wp-content/work/images/main/grid.png)
+        background-image:url(/index/wp-content/work/images/main/grid.png)
     }
 }
 
@@ -5510,7 +5510,7 @@ i.iconfont.down {
 }
 
 #pagination .loading {
-    background: url(https://iamyukino.cn/index/wp-content/work/images/main/wordpress-rotating-ball-o.svg);
+    background: url(/index/wp-content/work/images/main/wordpress-rotating-ball-o.svg);
     background-position: center;
     background-repeat: no-repeat;
     color: #555;
