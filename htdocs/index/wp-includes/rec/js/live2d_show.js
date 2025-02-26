@@ -4,8 +4,8 @@ function back2lastdoc (href){
 }
 function loadmd (name){
     let modulesPath = "/index/wp-content/rec/live2d/models/"
-	let modelNames = [name]
-	loadModel(modulesPath, modelNames);
+    let modelNames = [name]
+    loadModel(modulesPath, modelNames);
 }
 function copy_code(){
     live2d-source.select();

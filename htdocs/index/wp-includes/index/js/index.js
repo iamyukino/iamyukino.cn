@@ -35,8 +35,8 @@
         return false;
     } // disable right button
   
-	$(function(){
-	    function n(n, e, t){
+    $(function(){
+        function n(n, e, t){
             return n.getAttribute(e)||t
         }
         function e(n){
@@ -55,11 +55,11 @@
         function o(){
             a = m.width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
             c = m.height = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight
-	    }
-	    function i(){
-	        r.clearRect(0, 0, a, c);
-		    var n, e, t, o, m, l;
-		    s.forEach(function(i, x){
+        }
+        function i(){
+            r.clearRect(0, 0, a, c);
+            var n, e, t, o, m, l;
+            s.forEach(function(i, x){
                 for(i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0? -1 : 1, i.ya *= i.y > c
                         || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1;
                     e<u.length;
@@ -73,10 +73,10 @@
                         r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke())
                     )
                 }
-	        }), x(i)
+            }), x(i)
         }
         var a, c, u, m = document.createElement("canvas"), d = t(), l = "c_n" + d.l, r = m.getContext("2d"),
-	    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame||window.msRequestAnimationFrame||
+        x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame||window.msRequestAnimationFrame||
         function(n){
             window.setTimeout(n,1e3/45)
         },
@@ -96,7 +96,7 @@
         }
         u = s.concat([y]),
         setTimeout(function(){i()},100)
-	});
+    });
     
     !function (e, t, a) {
         function r() {

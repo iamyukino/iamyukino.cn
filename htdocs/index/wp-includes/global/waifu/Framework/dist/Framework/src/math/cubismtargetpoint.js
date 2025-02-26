@@ -107,8 +107,8 @@ var CubismTargetPoint = /** @class */ (function () {
             //                    2
             //                 4 t  - 2
             // (t=1)
-            // 	時刻tは、あらかじめ加速度、速度を1/60(フレームレート、単位なし)で
-            // 	考えているので、t＝１として消してよい（※未検証）
+            //     時刻tは、あらかじめ加速度、速度を1/60(フレームレート、単位なし)で
+            //     考えているので、t＝１として消してよい（※未検証）
             var maxV_1 = 0.5 *
                 (cubismmath_1.CubismMath.sqrt(maxA * maxA + 16.0 * maxA * d - 8.0 * maxA * d) -
                     maxA);

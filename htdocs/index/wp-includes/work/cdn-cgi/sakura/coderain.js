@@ -1,9 +1,9 @@
 function wordrain(){
-	var canvas = document.createElement("canvas")
-	canvas.setAttribute("id","coderain")
-	canvas.setAttribute("style","position: fixed;right: 0px;bottom: 0px;min-width: 100%;min-height: 100%;height: auto;width: auto;z-index: -2")
-	canvas.setAttribute("width","1440")
-	canvas.setAttribute("height","900")
+    var canvas = document.createElement("canvas")
+    canvas.setAttribute("id","coderain")
+    canvas.setAttribute("style","position: fixed;right: 0px;bottom: 0px;min-width: 100%;min-height: 100%;height: auto;width: auto;z-index: -2")
+    canvas.setAttribute("width","1440")
+    canvas.setAttribute("height","900")
     var context =canvas.getContext("2d");
     var s = window.screen;
     var W = canvas.width = s.width;
@@ -41,6 +41,6 @@ function wordrain(){
     }
     draw();
     setInterval(draw,35);
-	document.getElementsByTagName("body").item(0).appendChild(canvas);
+    document.getElementsByTagName("body").item(0).appendChild(canvas);
 }
 wordrain();

@@ -31,7 +31,7 @@ var CIYANG
         $(this).remove()  
     });  
     }, options.newOn);  
-	CIYANG = interval;
+    CIYANG = interval;
     };  
 })(jQuery);  
 $(function(){  

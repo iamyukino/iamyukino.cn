@@ -148,7 +148,7 @@ function elseActed() {
 }
 
 function showHitokoto(){
-	/* 增加 hitokoto.cn API */
+    /* 增加 hitokoto.cn API */
     $.getJSON('https://v1.hitokoto.cn', function(result){
         var text = '<span style="color:#66AAFF;font-weight:bold;">乃梨</span>和<span style="color:#FF66AA;font-weight:bold;">雨宫</span>感谢<span style="font-weight:bold;">{creator}</span>网友的句子~';
         text = text.render({source: result.from, creator: result.creator});

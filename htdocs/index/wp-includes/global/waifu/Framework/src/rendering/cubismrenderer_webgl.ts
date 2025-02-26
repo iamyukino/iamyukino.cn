@@ -434,7 +434,7 @@ export class CubismClippingManager_WebGL {
         //########## 本来は割り当てられた領域の全体を使わず必要最低限のサイズがよい
 
         // シェーダ用の計算式を求める。回転を考慮しない場合は以下のとおり
-        // movePeriod' = movePeriod * scaleX + offX		  [[ movePeriod' = (movePeriod - tmpBoundsOnModel.movePeriod)*scale + layoutBoundsOnTex01.movePeriod ]]
+        // movePeriod' = movePeriod * scaleX + offX          [[ movePeriod' = (movePeriod - tmpBoundsOnModel.movePeriod)*scale + layoutBoundsOnTex01.movePeriod ]]
         const scaleX: number =
           layoutBoundsOnTex01.width / this._tmpBoundsOnModel.width;
         const scaleY: number =

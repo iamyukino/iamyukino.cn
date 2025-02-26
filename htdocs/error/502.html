@@ -52,19 +52,19 @@
         <dl>
           <dt>错误说明：坏的网关，http向后端节点请求，没有响应</dt>
           <dt>原因1：DNS 缓冲</dt>
-		  <dd>解决办法：</dd>
+          <dd>解决办法：</dd>
           <dd>在dos窗口运行 ipconfig /flushdns，该命令会刷新DNS缓冲。</dd>
           <dt>原因2：浏览器代理</dt>
-		  <dd>解决办法：</dd>
+          <dd>解决办法：</dd>
           <dd>关掉代理。</dd>
-		  <dt>原因3：dns 被劫持了，即使使用国外的dns，也会被劫持</dt>
-		  <dd>解决办法：</dd>
+          <dt>原因3：dns 被劫持了，即使使用国外的dns，也会被劫持</dt>
+          <dd>解决办法：</dd>
           <dd>去掉VPN服务器的DNS。切换另外的dns。在windows系统中，可以在本地网络连接的属性中，去掉默认的dns，选用国外的dns，比如google的或opendns。</dd>
-		  <dt>原因4：php执行超时</dt>
-		  <dd>解决办法：</dd>
+          <dt>原因4：php执行超时</dt>
+          <dd>解决办法：</dd>
           <dd>修改/usr/local/php/etc/php.ini 将max_execution_time 改为300。</dd>
-		  <dt>原因5：nginx等待时间超时</dt>
-		  <dd>解决办法：</dd>
+          <dt>原因5：nginx等待时间超时</dt>
+          <dd>解决办法：</dd>
           <dd>适当增加nginx.conf配置文件中FastCGI的timeout时间。</dd>
         </dl>
         
