@@ -23,15 +23,15 @@
 <div id="pjaxContent">
     <link rel="stylesheet" href="/index/wp-includes/err/404.css">
     <script>
-        var patto = /^(?:https?:\/\/[^/]+)?\/zh-CN(?=\/|$|\?|#)/;
+        var patto = /^(?:https?:\/\/[^/]+)?\/ja-JP(?=\/|$|\?|#)/;
         var patt1 = /^(?:https?:\/\/[^/]+)?\/(zh((-|_)(TW|CHS|SG|CHT|HK|MO|CN))?)(?=\/|$|\?|#)/i;
         var patt2 = /^(?:https?:\/\/[^/]+)?\/((ja|ko|en)((-|_)[A-Z]{2,3})?)(?=\/|$|\?|#)/i;
         if (patto.test(window.location.href))
             ;
         else if (patt1.test(window.location.href))
-            window.location.href='/zh-CN';
-        else if (patt2.test(window.location.href))
             window.location.href='/';
+        else if (patt2.test(window.location.href))
+            window.location.href='/ja-JP';
         
         function back2lastdoc (){
             if (history.length > 1) window.history.go(-1);
@@ -45,7 +45,7 @@
             <h4 data-text="Page not found">Page not found</h4>
             <p>このアドレスに設定されているサイトには、要求されたファイルは含まれていません</p>
             <p>もしこれが問題だと思うのなら、バグを報告してください</p>
-            <p style="font-size:50%;"><br>All Rights Reserved. Copyright © 2025 iamYukino</p>
+            <p style="font-size:50%;"><br>All Rights Reserved. Copyright © 2025 iamyukino.cn</p>
             <div class="btns">
                 <a onclick="back2lastdoc()">戻る</a>
                 <a href="/work/comment">報告問題</a>

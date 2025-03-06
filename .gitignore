@@ -3,3 +3,8 @@
 
 # vscode cache files
 **/.vscode/*
+
+# ssl key
+*.crt
+*.csr
+*.key
