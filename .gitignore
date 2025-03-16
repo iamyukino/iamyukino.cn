@@ -8,3 +8,6 @@
 *.crt
 *.csr
 *.key
+
+# pyc
+*.pyc
