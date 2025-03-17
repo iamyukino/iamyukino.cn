@@ -1,0 +1,10 @@
+环境变量C:\iamyukino.cn\apache24（可能MOD_WSGI_APACHE_ROOTDIR）
+运行pip install mod_wsgi生成.so文件mod_wsgi-express module-config（.pyc后缀改.so）
+pip install django
+pip install whitenoise
+cd C:\iamyukino.cn\apache24\bin
+httpd.exe -k install -n 'iamyukino'
+net start iamyukino（httpd.exe -k start -n 'iamyukino'）
+net stop iamyukino（httpd.exe -k stop -n 'iamyukino'）
+httpd.exe -k uninstall -n 'iamyukino'（httpd.exe -k restart -n 'iamyukino'）
+

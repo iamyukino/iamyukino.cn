@@ -1,6 +1,0 @@
-cd C:\iamyukino.cn\sys\Apache24\bin
-httpd.exe -k install -n'iamyukino'
-httpd.exe -k start -n'iamyukino'
-httpd.exe -k stop -n'iamyukino'
-httpd.exe -k restart -n'iamyukino'
-# see C:\iamyukino.cn\sys\Apache24\conf\httpd.conf
