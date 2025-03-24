@@ -7,8 +7,9 @@ def index(request, lang="index"):
     if (request.path.endswith("ja-JP/")):
         pstr = request.path
         return redirect(pstr.rstrip("/"))
+    la = ("ja-JP" if lang == "ja-JP" else "zh-CN")
     try:
-        return render(request, lang + ".html")
+        return render(request, "index.html", {"la":la})
     except:
         raise Http404("views.index: page not found")
 
