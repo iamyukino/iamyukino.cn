@@ -30,42 +30,233 @@ console.log( '我要定一个大目标， \n完成它可能会使自己陷入昏
 document.oncontextmenu = () => { return false; }
 
 
+/**
+ * 自我介绍 - 时间轴
+ * @requires Vue-jQuery
+ */
+const TimeLineManager = {
+    init: function() {
+        this.destroy();
+        this.initTimeLinePlugin();
+        this.initVueInstance();
+    },
+    initTimeLinePlugin: function() {
+        const $timeLine = $(".ui-timeLine");
+        const $activeLine = $(".ui-timeLine .activeLine");
+        const $dots = $(".ui-timeLine .dot");
+        const $cboxs = $(".ui-timeLine .item .cbox");
+
+        const setActiveLineHeight = () => {
+        const height = $(document).scrollTop() + window.innerHeight;
+        let lastActiveIndex = 0;
+
+        $dots.each((i, dot) => {
+            const $dot = $(dot);
+            const $cbox = $cboxs.eq(i);
+            if ($dot.offset().top < height) {
+                $dot.addClass("active");
+                $cbox.css("left", 0);
+                lastActiveIndex = i;
+            } else {
+                $dot.removeClass("active");
+                $cbox.css("left", "100vw");
+            }
+        });
+        $activeLine.css({
+            "height": $dots.eq(lastActiveIndex).offset().top - 
+                    $timeLine.offset().top + 40 + "px"
+        });
+        };
+        $(window).off('scroll.timeLine')
+            .on('scroll.timeLine', setActiveLineHeight);
+        setActiveLineHeight();
+        this.$elements = { $timeLine, $activeLine, $dots, $cboxs };
+    },
+    initVueInstance: function() {
+        this.vueInstance = new Vue({
+            el: ".ui-timeLine",
+            mounted() {
+                setTimeout(() => TimeLineManager.initTimeLinePlugin(), 50);
+            }
+        });
+    },
+    destroy: function() {
+        if (this.$elements) {
+            $(window).off('scroll.timeline');
+            this.$elements = null;
+        }
+        if (this.vueInstance) {
+            this.vueInstance.$destroy();
+            this.vueInstance = null;
+        }
+    }
+}; $(()=>{TimeLineManager.init()});
 
 /**
  * lazyload
+ * @requires none
  */
-document.addEventListener('DOMContentLoaded',function() {
+$(() => {
     let lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
     let active = false;
     const lazyLoad = function() {
-        if(active === false){
-            active = true;
-            setTimeout(function(){
-                lazyImages.forEach(function(lazyImage) {
-                    if((lazyImage.getBoundingClientRect().top <= window.innerHeight 
-                    && lazyImage.getBoundingClientRect().bottom >= 0) 
-                    &&  getComputedStyle(lazyImage).display !== "none"){
-                        lazyImage.src = lazyImage.dataset.src;
-                        lazyImage.classList.remove("lazy");
-                        lazyImages = lazyImages.filter(image => {
-                            return image !==lazyImage;
-                        });
-                        if(lazyImages.length === 0){
-                            document.addEventListener("scroll",lazyLoad);
-                            window.addEventListener("resize",lazyLoad);
-                            window.addEventListener("orientationchange",lazyLoad);
-                        }   
-                    }
+        if(active !== false) return ;
+        active = true;
+        setTimeout(function(){
+            lazyImages.forEach(function(lazyImage) {
+                if(lazyImage.getBoundingClientRect().top > window.innerHeight 
+                || lazyImage.getBoundingClientRect().bottom < 0
+                || getComputedStyle(lazyImage).display === "none")
+                    return ;
+                lazyImage.src = lazyImage.dataset.src;
+                lazyImage.classList.remove("lazy");
+                lazyImages = lazyImages.filter(image => {
+                    return image !== lazyImage;
                 });
-                active = false;
-            },200)
-        } 
+                if(lazyImages.length === 0){
+                    document.removeEventListener("scroll",lazyLoad);
+                    window.removeEventListener("resize",lazyLoad);
+                    window.removeEventListener("orientationchange",lazyLoad);
+                }   
+            });
+            active = false;
+        }, 200);
     }
     lazyLoad();
     document.addEventListener("scroll",lazyLoad);
     window.addEventListener("resize",lazyLoad);
     window.addEventListener("orientationchange",lazyLoad);
 });
+
+/**
+ * jQuery for page scrolling feature
+ * @requires jQuery-Easing-plugin
+ */
+function pageScroll() {
+    // page-scroll
+    $('a.page-scroll[href*="#"]:not([href="#"])').off('click.pageScroll')
+    .on('click.pageScroll', function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: (target.offset().top -70)
+                }, 1200, "easeInOutExpo");
+                return false;
+            }
+        }
+    });
+
+    // prealoder
+    $(window).off('load.preLoader')
+    .on('load.preLoader', function(event) {
+        $('.preloader').delay(500).fadeOut(500);
+    });
+    
+    // mobile-menu 
+    $(".navbar-toggler").off('click.navToggle')
+    .on('click.navToggle', function() {
+        $(".navbar-toggler").toggleClass('active');
+    });
+    $(".navbar-nav a").off('click.navNavAT')
+    .on('click.navNavAT', function() {
+        $(".navbar-toggler").removeClass('active');
+        $(".navbar-collapse").removeClass("show");
+    });
+    
+    // sticky
+    $(window).off('scroll.navSticky')
+    .on('scroll.navSticky', function(event) {    
+        var scroll = $(window).scrollTop();
+        if (scroll < 10) {
+            $(".navigation").removeClass("sticky");
+        } else{
+            $(".navigation").addClass("sticky");
+        }
+    });
+    
+    // section menu active
+    var scrollLink = $('.page-scroll');
+        // active link switching
+    $(window).scroll(function() {
+        var scrollbarLocation = $(this).scrollTop();
+        scrollLink.each(function(_i,e) {
+          if (e.hash !== undefined && e.hash.length) { // back-to-top do not have this parm
+            var sectionOffset = $(e.hash).offset().top - 73;
+            if (sectionOffset <= scrollbarLocation) {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+            }
+          }
+        });
+    });
+    
+    // Parallaxmouse js
+    function parallaxMouse() {
+        if ($('#parallax').length) {
+            var scene = document.getElementById('parallax');
+            var parallax = new Parallax(scene);
+        };
+    };
+    parallaxMouse();
+    
+    // Progress Bar
+    if($('.progress-line').length){
+        $('.progress-line').appear(function(){
+            var el = $(this);
+            var percent = el.data('width');
+            $(el).css('width',percent+'%');
+        },{accY: 0});
+    }
+    
+    // Counter Up
+    $('.counter').counterUp({
+        delay: 10,
+        time: 1600,
+    });
+    
+    // Magnific Popup
+    $('.image-popup').magnificPopup({
+      type: 'image',
+      gallery:{
+        enabled:true
+      }
+    });
+    
+    // Back to top
+    var curPos = 0;
+    // Show or hide the sticky footer button
+    $(window).off('scroll.btnBk2top')
+    .on('scroll.btnBk2top', function(event) {
+        if($(this).scrollTop() > 600){
+            $('.back-to-top').fadeIn(200)
+            $('.lang-to-swi').fadeIn(200)
+        } else{
+            $('.lang-to-swi').fadeOut(200)
+            $('.back-to-top').fadeOut(200)
+        }
+    });
+    
+    // Animate the scroll to top
+    $('.back-to-top').off('click.aniBk2top')
+    .on('click.aniBk2top', function(event) {
+        event.preventDefault();
+        curPos = $(window).scrollTop();
+        $('html, body').animate({
+            scrollTop: 0,
+        }, {
+            duration: 1500,
+            easing: 'easeInOutExpo',
+            step: function(){
+                const cpos = $(window).scrollTop();
+                if (cpos <= curPos) { curPos = cpos; return ; }
+                $('html, body').stop();
+            }
+        });
+    });
+
+} $(pageScroll);
 
 /**
  * 标题彩蛋
@@ -87,6 +278,78 @@ document.addEventListener('DOMContentLoaded',function() {
         }
     });
 })();
+
+/**
+ * 打字机效果
+ */
+function typeWriter(element, placeholder, texts, speed = 100, pause = 1000) {
+    let currentTextIndex = 0;
+    let isDeleting = false;
+    let currentCharIndex = 0;
+    let timeout;
+    function type() {
+        const currentText = texts[currentTextIndex];
+        // 确定当前要显示的文字
+        let displayText;
+        if (isDeleting) {
+            displayText = currentText.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+        } else {
+            displayText = currentText.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+        }
+        element.text(displayText);
+        // 确定下一个状态
+        if (!isDeleting && currentCharIndex === currentText.length) {
+            // 完成输入，暂停后开始删除
+            isDeleting = true;
+            timeout = setTimeout(type, pause);
+        } else if (isDeleting && currentCharIndex === 0) {
+            // 完成删除，切换到下一段文本
+            isDeleting = false;
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
+            timeout = setTimeout(type, speed);
+        } else if (!isDeleting && currentCharIndex - 1 > 0
+        && "、～".includes(currentText[currentCharIndex - 1])) {
+            // 在你好后停顿
+            timeout = setTimeout(type, speed * 6);
+            isDeleting = false;
+        } else {
+            // 继续输入或删除
+            timeout = setTimeout(type, isDeleting ? speed / 2 : speed);
+        }
+    }
+    // 设置占位符文本，开始打字，返回清除函数
+    placeholder.text(texts[0]);
+    type();
+    return function(){ clearTimeout(timeout); };
+}
+// 根据语言初始化打字机效果
+function initTypeWriter() {
+    const container = $('.typing-container');
+    const element = container.find('.typing-effect');
+    const placeholder = container.find('.placeholder');
+    const isChinese = container.closest('.set-lang').text().includes("你好～谢谢你来看我！");
+    const texts = isChinese 
+        ? [
+            "你好～谢谢你来看我！",
+            "一隅雨雪一炉窝——",
+            "可能会融化持久堆？"
+          ]
+        : [
+            "ついに独自ドメイン！",
+            "片隅の雨雪、小さな炉端、",
+            "永久に続く積雪は溶けるのか？"
+          ];
+    // 清除之前的打字效果
+    if (container.data('clearTypeWriter')) {
+        container.data('clearTypeWriter')();
+    }
+    // 初始化新的打字效果
+    const clearTypeWriter = typeWriter(element, placeholder, texts);
+    container.data('clearTypeWriter', clearTypeWriter);
+}
+$(initTypeWriter);
 
 /**
  * 粒子特效（爱心）
@@ -166,9 +429,10 @@ $(function() {
         rand = Math.random,
         mousePos = { x: null, y: null, maxDist: 20000 };
 
-    // 初始化画布
+    // 画布初始化
     canvasEl.id = "c_n" + cfg.scriptsLen;
-    canvasEl.style.cssText = `position:fixed;top:0;left:0;z-index:${cfg.zIndex};opacity:${cfg.opacity}`;
+    canvasEl.style.cssText = `position:fixed; top:0; left:0;
+        z-index:${cfg.zIndex}; opacity:${cfg.opacity}`;
     document.body.appendChild(canvasEl);
     initCanvasSize();
 
@@ -191,10 +455,8 @@ $(function() {
               xv = 2 * rand() - 1,
               yv = 2 * rand() - 1;
         particles.push({
-            x: startX,
-            y: startY,
-            xv: xv,
-            yv: yv,
+            x: startX, y: startY,
+            xv: xv,   yv: yv,
             maxDist: 6000
         });
     }
@@ -203,8 +465,7 @@ $(function() {
 });
 
 !function(win, doc) {
-    // 爱心动画
-    function updateHearts() {
+    function updateHearts() { // 爱心动画
         hearts.forEach((hrt, i) => {
             hrt.alpha <= 0 ? (doc.body.removeChild(hrt.el), hearts.splice(i, 1)) : (
                 hrt.y--,
@@ -299,7 +560,7 @@ function show_runtime () {
     showTime.innerHTML = lang == 0 ?
         A + "天" + B + "小时" + C + "分" + (D >= 10 ? D : "0" + D) + "秒":
         A + "日" + B + "時" + C + "分" + (D >= 10 ? D : "0" + D) + "秒";
-}
+} $(show_runtime);
 
 /**
  * 资源站 - 画廊滚动
@@ -314,15 +575,12 @@ $(document).ready(function () {
         var $Box_ul = $Box.find("ul"),
             $Box_li = $Box_ul.find("li"),
             $Box_li_span = $Box_li.find("span"),
-            left = 0,
-            s = 0,
-            timer;// 定时器
-
+            left = 0, s = 0,
+            timer; // 定时器
         $Box_li.each(function (index) {
-            $($Box_li_span[index]).width($(this).width());// hover
+            $($Box_li_span[index]).width($(this).width()); // hover
             s += $(this).outerWidth(true); // 即要滚动的长度
         })
-
         window.requestAnimationFrame = window.requestAnimationFrame || function (Tmove) {
             return setTimeout(Tmove, 1000 / 60)
         };
@@ -332,10 +590,8 @@ $(document).ready(function () {
             // 如果滚动长度超出Box长度即开始滚动，没有的话就不执行滚动
             $Box_li.clone(true).appendTo($Box_ul);
             Tmove();
-
             function Tmove() {
-                // 运动是移动left 从0到-s 左
-                left -= v;
+                left -= v; // 运动是移动left 从0到-s左
                 if (left <= -s) {
                     left = 0;
                     $Box_ul.css("left", left)
@@ -344,12 +600,9 @@ $(document).ready(function () {
                 }
                 timer = requestAnimationFrame(Tmove);
             }
-
             $Box_ul.hover(function () {
                 cancelAnimationFrame(timer)
-            }, function () {
-                Tmove()
-            })
+            }, function () { Tmove() })
         }
     }
 })
@@ -377,6 +630,8 @@ async function setLang (curPath, newPath) {
         document.title = tempdiv.querySelector('title').textContent;
         TimeLineManager.init();
         stateClickCount.reset();
+        $(pageScroll);
+        initTypeWriter();
     } catch (error) {
         console.error('toggle-language failed.', error);
     }
@@ -408,7 +663,13 @@ const stateClickCount = (function() {
         getCount: () => clickCount,
         setCount: (val) => clickCount+=val,
         increment: () => clickCount++,
-        reset: () => clickCount = 0
+        reset: () => {
+            document.querySelectorAll('.modal-backdrop')
+                .forEach(backdrop => backdrop.remove())
+            document.body.classList.remove('modal-open');
+            document.body.style.paddingRight = '';
+            clickCount = 0;
+        }
     };
     })();
 
@@ -446,38 +707,35 @@ function handleNoClick() {
 function handleYesClick() {
     let lang = window.location.pathname.includes('ja-JP') ? 1 : 0;
     document.getElementById("pix-body").innerHTML = `
-        <!--div class="container"-->
-            <div class="set-lang" style="display:none;"></div>
-            <div class="set-lang" style="display:none;"></div>
-            <div class="set-lang" style="display:none;"></div>
-            <div class="pix-yes-screen">
-                <div class="pix-yes-text">` +(
-                (lang == 0) ? `!!!喜欢你!! ( >᎑<)♡︎ᐝ`
-                : `!!!大好き!! ( >᎑<)♡︎ᐝ`
-                ) + `</div>
-                <div class="pix-LY14">
-                    <input type="checkbox" class="pix-LY14d">
-                    <div class="pix-LY14e">
-                        <svg viewBox="0 0 24 24" class="pix-LY14c" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"></path>
-                        </svg>
-                        <svg viewBox="0 0 24 24" class="pix-LY14b" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
-                        </svg>
-                        <svg class="pix-LY14a" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="10,10 20,20"></polygon>
-                            <polygon points="10,50 20,50"></polygon>
-                            <polygon points="20,80 30,70"></polygon>
-                            <polygon points="90,10 80,20"></polygon>
-                            <polygon points="90,50 80,50"></polygon>
-                            <polygon points="80,80 70,70"></polygon>
-                        </svg>
-                    </div>
+        <div class="set-lang" style="display:none;"></div>
+        <div class="set-lang" style="display:none;"></div>
+        <div class="set-lang" style="display:none;"></div>
+        <div class="pix-yes-screen">
+            <div class="pix-yes-text">` +(
+            (lang == 0) ? `!!!喜欢你!! ( >᎑<)♡︎ᐝ`
+            : `!!!大好き!! ( >᎑<)♡︎ᐝ`
+            ) + `</div>
+            <div class="pix-LY14">
+                <input type="checkbox" class="pix-LY14d">
+                <div class="pix-LY14e">
+                    <svg viewBox="0 0 24 24" class="pix-LY14c" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"></path>
+                    </svg>
+                    <svg viewBox="0 0 24 24" class="pix-LY14b" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
+                    </svg>
+                    <svg class="pix-LY14a" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="10,10 20,20"></polygon>
+                        <polygon points="10,50 20,50"></polygon>
+                        <polygon points="20,80 30,70"></polygon>
+                        <polygon points="90,10 80,20"></polygon>
+                        <polygon points="90,50 80,50"></polygon>
+                        <polygon points="80,80 70,70"></polygon>
+                    </svg>
                 </div>
-                <div id="pix-image"></div>
             </div>
-        <!--div-->
-    `;
+            <div id="pix-image"></div>
+        </div>`;
 }
 
 // 处理lang-switch-button和yes-no-button的响应
@@ -496,62 +754,3 @@ document.addEventListener('click', function(event) {
         return ;
     }
 });
-
-// 时间轴
-const TimeLineManager = {
-    init: function() {
-        this.destroy();
-        this.initTimeLinePlugin();
-        this.initVueInstance();
-    },
-    initTimeLinePlugin: function() {
-        const $timeLine = $(".ui-timeLine");
-        const $activeLine = $(".ui-timeLine .activeLine");
-        const $dots = $(".ui-timeLine .dot");
-        const $cboxs = $(".ui-timeLine .item .cbox");
-
-        const setActiveLineHeight = () => {
-        const height = $(document).scrollTop() + window.innerHeight;
-        let lastActiveIndex = 0;
-
-        $dots.each((i, dot) => {
-            const $dot = $(dot);
-            const $cbox = $cboxs.eq(i);
-            if ($dot.offset().top < height) {
-                $dot.addClass("active");
-                $cbox.css("left", 0);
-                lastActiveIndex = i;
-            } else {
-                $dot.removeClass("active");
-                $cbox.css("left", "100vw");
-            }
-        });
-        $activeLine.css({
-            "height": $dots.eq(lastActiveIndex).offset().top - 
-                    $timeLine.offset().top + 40 + "px"
-        });
-        };
-        $(window).on('scroll.timeline', setActiveLineHeight);
-        setActiveLineHeight();
-        this.$elements = { $timeLine, $activeLine, $dots, $cboxs };
-    },
-    initVueInstance: function() {
-        this.vueInstance = new Vue({
-            el: ".ui-timeLine",
-            mounted() {
-                setTimeout(() => TimeLineManager.initTimeLinePlugin(), 50);
-            }
-        });
-    },
-    destroy: function() {
-        if (this.$elements) {
-            $(window).off('scroll.timeline');
-            this.$elements = null;
-        }
-        if (this.vueInstance) {
-            this.vueInstance.$destroy();
-            this.vueInstance = null;
-        }
-    }
-};
-

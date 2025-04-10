@@ -5,6 +5,23 @@ body {
   margin: 0 auto;
 }
 
+.typing-container {
+  position: relative;
+  display: inline-block;
+}
+
+.typing-effect {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.placeholder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
 .game-box {
   top: 40px;
   right: 0;
@@ -131,6 +148,12 @@ p {
   font-size: var(--font-size);
   line-height: var(--font-size);
   zoom: 1.5; }
+
+ps {
+  font-size: 80%; }
+pb {
+  font-size: 120%; }
+h5:before { content: '#'; color: #c3809f; }
 
 p .link {
   display: inline-block;
@@ -974,7 +997,7 @@ p {
   top: -7px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .navigation .navbar .navbar-collapse {
       position: absolute;
       top: 158%;
@@ -1008,7 +1031,7 @@ p {
   margin-left: 30px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .navigation .navbar .navbar-nav .nav-item {
       margin: 4px 0;
   }
@@ -1057,7 +1080,7 @@ p {
   transition: all 0.3s ease-out 0s;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .navigation .navbar .navbar-nav .nav-item a::before {
       display: none;
   }
@@ -1083,18 +1106,68 @@ p {
   margin-top: 90px;
   position: relative;
   overflow: hidden;
-  background-color: #fbfbfb;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+:root{
+  --primary-pink: #c3809f;
+  --secondary-lavender: #a98ad9;
+  --accent-mint: #7fcca3;
+  --accent-yellow: #f5ca71;
+  --light-pink: #f9eef1;
+  --dark-text: #333333;
+  --light-text: #666666;
+  --white: #ffffff;
+  --off-white: #f9f7fa;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+.header-content {
+  background: linear-gradient(135deg, 
+    hsl(340, 60%, 97%) 0%, 
+    hsl(270, 40%, 95%) 50%, 
+    hsl(150, 40%, 95%) 100%
+  );
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.header-content:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 70% 20%, hsla(40, 85%, 70%, 0.4) 0%, transparent 35%),
+    radial-gradient(circle at 20% 80%, hsla(342, 65%, 69%, 0.4) 0%, transparent 35%);
+  z-index: -99999;
+}
+.bgc-offwhite {
+  background-color: #f9f7fa;
+}
+
+@font-face{
+  font-family:ziti;
+  src: url("/statics/wp-content/index/footer/cjkFonts_allseto_v1.11.subset.woff2") format('woff2');
+}
+.purple-title {
+  font-family:'ziti';
+  background: linear-gradient(to right, #c3809f, #a98ad9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .header-content {
-      height: 550px;
+      height: 575px;
   }
 }
 
 @media (max-width: 767px) {
   .header-content {
-      height: 550px;
+      height: 575px;
   }
 }
 
@@ -1397,7 +1470,7 @@ bottom: 58px; }
 /*===========================
     3.ABOUT css 
 ===========================*/
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .about-area {
       padding-top: 90px;
       padding-bottom: 100px;
@@ -1415,6 +1488,13 @@ bottom: 58px; }
   font-size: 30px;
   font-weight: 500;
   padding-bottom: 15px;
+}
+
+@media (max-width: 767px) {
+  .about-text {
+    font-size: 12px;
+    line-height: 19px;
+  }
 }
 
 .about-content ul {
@@ -1460,6 +1540,10 @@ bottom: 58px; }
 
 .about-content .single-info .info-text p span {
   color: #32333c;
+}
+
+.info-text{
+  font-family: 'ziti';
 }
 
 .about-skills .skill-item .skill-header {
@@ -1520,7 +1604,7 @@ bottom: 58px; }
 /*===========================
     4.SERVICES css 
 ===========================*/
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .services-area {
       padding-top: 90px;
       padding-bottom: 100px;
@@ -1592,7 +1676,7 @@ bottom: 58px; }
   z-index: 9;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .call-to-action {
       padding-top: 90px;
       padding-bottom: 100px;
@@ -1675,7 +1759,7 @@ bottom: 58px; }
 /*===========================
     5.WORK css 
 ===========================*/
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .work-area {
       padding-top: 90px;
       padding-bottom: 100px;
@@ -1837,7 +1921,7 @@ bottom: 58px; }
 /*===========================
     6.PRICING css 
 ===========================*/
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .pricing-area {
       padding-top: 90px;
       padding-bottom: 100px;
@@ -1925,7 +2009,7 @@ bottom: 58px; }
 /*===========================
     7.BLOG css 
 ===========================*/
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .blog-area {
       padding-top: 90px;
       padding-bottom: 100px;
@@ -2032,7 +2116,7 @@ bottom: 58px; }
 /*===========================
     8.CONTACT css 
 ===========================*/
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .contact-area {
       padding-top: 90px;
       padding-bottom: 100px;
@@ -2164,7 +2248,7 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
   background-color: #4f8bae;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .footer-widget {
       padding-top: 30px;
       padding-bottom: 80px;
@@ -2178,7 +2262,7 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
   }
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 891px) {
   .footer-main {
       margin-bottom: 12px;
   }
@@ -2244,6 +2328,34 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
   text-align: center;
 }
 
+.lang-to-swi {
+  font-size: 14px;
+  color: #fff;
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  width: 50px;
+  height: 50px;
+  line-height: 18px;
+  border-radius: 50%;
+  border: 2px solid #586376;
+  background-color: #152136;
+  text-align: center;
+  z-index: 999;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+  display: none;
+}
+
+.lang-to-swi:hover {
+  color: #fff;
+  background-color: #4f8bae;
+  border-color: #4f8bae;
+}
+
 .back-to-top {
   font-size: 20px;
   color: #fff;
@@ -2281,7 +2393,7 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
   padding-bottom: 122px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .page-banner {
       padding-top: 88px;
       padding-bottom: 92px;
@@ -2313,7 +2425,7 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .page-banner-content .page-title {
       font-size: 38px;
   }
@@ -2359,7 +2471,7 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
 /*===========================
 10.SINGLE BLOG PAGE css 
 ===========================*/
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 891px) {
   .single-blog-page {
       padding-top: 70px;
       padding-bottom: 100px;
@@ -2826,6 +2938,16 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
 
 .section-title {
   text-transform: uppercase;
+}
+
+.introd-text {
+  font-family: 'ziti';
+}
+@media (max-width: 767px) {
+  .introd-text {
+    font-size: 12px;
+    line-height: 24px;
+  }
 }
 
 .project {

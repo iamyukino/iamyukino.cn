@@ -62,6 +62,12 @@
                 ,"让我们<span style=\"font-weight:bold;\">传送</span>吧"]
         },
         {
+            "selector": ".lang-switch",
+            "text": ["貴方何言語使用好会話？(・∀・)ﾉ"
+                ,"何言語使用好、<span style=\"font-weight:bold;\">偽中国語</span>我超得意推奨！"
+                ,"偽中国語、私超得意！ヾ(≧▽≦)ﾉ"]
+        },
+        {
             "selector": "#wpfront-scroll-top-container",
             "text": ["回到<span style=\"font-weight:bold;\">开始</span>的地方吧"
                 ,"回到<span style=\"font-weight:bold;\">梦开始</span>的地方吧"

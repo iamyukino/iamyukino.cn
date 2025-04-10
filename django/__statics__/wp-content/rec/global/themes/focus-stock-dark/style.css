@@ -296,7 +296,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
         }
     }
 
-    @media screen and (min-width: 991px) {
+    @media screen and (min-width: 891px) {
         .navigation-classic.absolute-header .main-navigation a,
         .navigation-classic.absolute-header .main-navigation .dropdown-toggle  {
             color: #ffffff;

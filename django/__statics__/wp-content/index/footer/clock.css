@@ -1,6 +1,6 @@
 @font-face{
     font-family:ziti;
-    src: url("./cjkFonts_allseto_v1.11.subset.ttf") format('woff2');
+    src: url("./cjkFonts_allseto_v1.11.subset.woff2") format('woff2');
 }
 #Clock{
     background-image:url("./Clock.png");

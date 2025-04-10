@@ -187,7 +187,9 @@ mark {
   color: #222; }
 
 small {
-  font-size: 80%; }
+  font-size: 20%; }
+big {
+  font-size: 200% }
 
 sub,
 sup {
@@ -9937,5 +9939,3 @@ form div.fes-form .fes-el .fes-fields input[type="url"],
 form div.fes-form .fes-el .fes-fields input[type="number"],
 form div.fes-form .fes-el .fes-fields textarea {
   border-color: transparent; }
-
-/# sourceMappingURL=style.css.map /

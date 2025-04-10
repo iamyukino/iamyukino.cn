@@ -1278,7 +1278,7 @@ a:active,a:hover {
     margin: 0;
     padding: 0;
     min-width: 99.999%;
-    min-height: 550px;
+    min-height: 200px;
     z-index: 0
 }
 
@@ -4687,7 +4687,7 @@ li.feature-2 {
 
 #centerbg {
     width: 100%;
-    height: 550px;
+    height: 200px;
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;

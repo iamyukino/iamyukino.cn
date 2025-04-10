@@ -14,3 +14,9 @@ httpd.exe -k uninstall -n 'iamyukino'（httpd.exe -k restart -n 'iamyukino'）
 
 测试django
 python manage.py runserver
+
+字体子集压缩
+pip install fonttools
+pip install brotli
+pyftsubset XiaolaiSC.woff2 --text-file=used.txt --output-file=XiaolaiSC.subset.woff2 --flavor=woff2 --no-hinting --desubroutinize
+pyftsubset cjkFonts_allseto_v1.11.ttf --text-file=used.txt --output-file=cjkFonts_allseto_v1.11.subset.woff2 --flavor=woff2 --no-hinting --desubroutinize
