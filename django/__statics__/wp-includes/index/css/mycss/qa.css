@@ -8,9 +8,7 @@
   padding: 20px;
   margin: 0px auto;
   border-radius: 5px;
-  
 }
-
 
 .hide {
   display: none;
@@ -47,6 +45,12 @@ dd {
   border-radius: 5px;
   margin: 20px 0 30px;
   position: relative;
+}
+@media (max-width: 767px) {
+  .qa-small p{
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
 
 /* Triangle in definition container */

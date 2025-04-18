@@ -1,5 +1,5 @@
 #pix-image {
-    background-image:url("/statics/wp-content/global/images/favicon.png");
+    background-image:url("/statics/wp-content/global/images/favicon_bd.png");
     background-color: #d4818e;
     background-size:100px 100px;
     width: 100px;
@@ -11,6 +11,8 @@
 #pix-que {
     margin-top: 5%;
     font-size: 28px;
+    font-family: 'ziti';
+    line-height: 32px;
     color: #68495b;
 }
 

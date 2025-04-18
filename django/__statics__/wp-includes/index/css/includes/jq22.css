@@ -19,7 +19,7 @@ body {
 }
 /*history*/
 .history {
-    background:url(../images/line04.png) repeat-y 187px 0;
+    background:url("/statics/wp-includes/index/images/line04.png") repeat-y 187px 0;
     overflow:visible;
     position:relative;
 }
@@ -28,7 +28,7 @@ body {
     position:relative;
 }
 .history-date h2 {
-    background:#fff url("../images/icon06.png") no-repeat 158px 0;
+    background:#fff url("/statics/wp-includes/index/images/icon06.png") no-repeat 158px 0;
     height:59px;
     font-size:25px;
     font-family:微软雅黑;
@@ -48,7 +48,7 @@ body {
     display:inline-block;
 *display:inline;
     zoom:1;
-    background:url(../images/icon08.png) no-repeat right 50%;
+    background:url("/statics/wp-includes/index/images/icon08.png") no-repeat right 50%;
     padding-right:17px;
     margin:21px 97px 0 0;
 }
@@ -62,7 +62,7 @@ body {
     background:none;
 }
 .history-date ul li {
-    background:url(../images/icon07.jpg) no-repeat 180px 0;
+    background:url("/statics/wp-includes/index/images/icon07.jpg") no-repeat 180px 0;
     padding-bottom:50px;
     zoom:1;
 }

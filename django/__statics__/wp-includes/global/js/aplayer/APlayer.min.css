@@ -72,7 +72,7 @@
     left: 0;
     right: 0;
     margin: 0;
-    z-index: 99;
+    z-index: 299;
     overflow: visible;
     max-width: 400px;
     box-shadow: none
@@ -90,7 +90,7 @@
     left: 0;
     right: 0;
     margin: 0;
-    z-index: 99;
+    z-index: 299;
     background: #fff;
     padding-right: 18px;
     transition: all .3s ease;
@@ -431,7 +431,7 @@
     right: -3px;
     width: 25px;
     height: 0;
-    z-index: 99;
+    z-index: 299;
     overflow: hidden;
     transition: all .2s ease-in-out
 }

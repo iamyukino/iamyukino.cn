@@ -22,15 +22,16 @@ String.prototype.render = function (context) {
 
 //live2dLoader对象
 var loader = live2dLoader;
+/*
 var re = /x/;
 console.log(re);
 re.toString = function() {
-    showMessage('你不可以打开<span style="color:#66AAFF;font-weight:bold;">乃梨</span>的工作台!', 5000, true);
+    showMessage('你不可以打开<span style="color:#FF66AA;font-weight:bold;">乃梨</span>的工作台!', 5000, true);
     return '';
-};
+};*/
 
 $(document).on('copy', function (){
-    showMessage('<span style="color:#66AAFF;font-weight:bold;">乃梨</span>把内容记好啦，等你ctrl+V！', 5000, true);
+    showMessage('<span style="color:#FF66AA;font-weight:bold;">乃梨</span>把内容记好啦，等你ctrl+V！', 5000, true);
 });
 
 $('.waifu-tool .fui-home').click(function (){
@@ -40,13 +41,13 @@ $('.waifu-tool .fui-home').click(function (){
 
 $('.waifu-tool .fui-eye').click(function () {
     //加载其他mod
-    showMessage('请稍等，<span style="color:#66AAFF;font-weight:bold;">乃梨</span>马上就来~~~',1000, true);
+    showMessage('请稍等，<span style="color:#FF66AA;font-weight:bold;">乃梨</span>马上就来~~~',1000, true);
     loadOtherModel();
 });
 
 $('.waifu-tool .fui-user').click(function () {
     //加载随机mod
-    showMessage('请稍等，<span style="color:#66AAFF;font-weight:bold;">乃梨</span>马上就来~~~',1000, true);
+    showMessage('请稍等，<span style="color:#FF66AA;font-weight:bold;">乃梨</span>马上就来~~~',1000, true);
     loadRandModel();
 });
 
@@ -57,7 +58,7 @@ $('.waifu-tool .fui-info-circle').click(function (){
 
 $('.waifu-tool .fui-cross').click(function (){
     sessionStorage.setItem('waifu-dsiplay', 'none');
-    showMessage('希望有一天，你也能像<span style="color:#66AAFF;font-weight:bold;">乃梨</span>和<span style="color:#FF66AA;font-weight:bold;">雨宫</span>一样相爱！', 4000, true);
+    showMessage('希望有一天，你也能像<span style="color:#FF66AA;font-weight:bold;">乃梨</span>和<span style="color:#66AAFF;font-weight:bold;">雨宫</span>一样相爱！', 4000, true);
     window.setTimeout(function() {$('.waifu').hide();}, 1300);
 });
 
@@ -66,7 +67,7 @@ $('.waifu-tool .fui-chat').click(function (){
 });
 
 $('.waifu-tool .fui-photo').click(function (){
-    showMessage('咔嚓~<span style="color:#66AAFF;font-weight:bold;">乃梨</span>与<span style="color:#FF66AA;font-weight:bold;">雨宫</span>陷入了记忆中！', 5000, true);
+    showMessage('咔嚓~<span style="color:#FF66AA;font-weight:bold;">乃梨</span>与<span style="color:#66AAFF;font-weight:bold;">雨宫</span>陷入了记忆中！', 5000, true);
     html2canvas(document.body, {
         onrendered: (canvas) => {
             var a = document.createElement("a");
@@ -85,21 +86,21 @@ $('.waifu-tool .fui-photo').click(function (){
     if (window.location.href == SiteIndexUrl) {      // 如果是主页
         var now = (new Date()).getHours();
         if (now > 23 || now <= 5) {
-            text = '<span style="color:#66AAFF;font-weight:bold;">乃梨</span>和<span style="color:#FF66AA;font-weight:bold;">雨宫</span>已经睡啦！告诉你个秘密，<span style="color:#FF66AA;font-weight:bold;">雨宫</span>是<span style="color:#66AAFF;font-weight:bold;">乃梨</span>的氧气哦~';
+            text = '<span style="color:#FF66AA;font-weight:bold;">乃梨</span>和<span style="color:#66AAFF;font-weight:bold;">雨宫</span>已经睡啦！告诉你个秘密，<span style="color:#66AAFF;font-weight:bold;">雨宫</span>是<span style="color:#FF66AA;font-weight:bold;">乃梨</span>的氧气哦~';
         } else if (now > 5 && now <= 8) {
-            text = '早上好！<span style="color:#66AAFF;font-weight:bold;">乃梨</span>主人还在睡觉呢！';
+            text = '早上好！<span style="color:#FF66AA;font-weight:bold;">乃梨</span>主人还在睡觉呢！';
         } else if (now > 8 && now <= 11) {
-            text = '上午好！要像<span style="color:#FF66AA;font-weight:bold;">雨宫</span>一样勤勤劳劳的！';
+            text = '上午好！要像<span style="color:#66AAFF;font-weight:bold;">雨宫</span>一样勤勤劳劳的！';
         } else if (now > 11 && now <= 13) {
-            text = '中午了，快和<span style="color:#66AAFF;font-weight:bold;">乃梨</span><span style="color:#FF66AA;font-weight:bold;">雨宫</span>她们吃午饭吧！';
+            text = '中午了，快和<span style="color:#FF66AA;font-weight:bold;">乃梨</span><span style="color:#66AAFF;font-weight:bold;">雨宫</span>她们吃午饭吧！';
         } else if (now > 13 && now <= 17) {
-            text = '午后啦，同<span style="color:#66AAFF;font-weight:bold;">乃梨</span>和<span style="color:#FF66AA;font-weight:bold;">雨宫</span>一起加油干活吧！';
+            text = '午后啦，同<span style="color:#FF66AA;font-weight:bold;">乃梨</span>和<span style="color:#66AAFF;font-weight:bold;">雨宫</span>一起加油干活吧！';
         } else if (now > 17 && now <= 19) {
-            text = '傍晚啦~<span style="color:#66AAFF;font-weight:bold;">乃梨</span>和<span style="color:#FF66AA;font-weight:bold;">雨宫</span>在回家享受晚餐呢！';
+            text = '傍晚啦~<span style="color:#FF66AA;font-weight:bold;">乃梨</span>和<span style="color:#66AAFF;font-weight:bold;">雨宫</span>在回家享受晚餐呢！';
         } else if (now > 19 && now <= 21) {
-            text = '晚上好，<span style="color:#66AAFF;font-weight:bold;">乃梨</span>和<span style="color:#FF66AA;font-weight:bold;">雨宫</span>的休闲时间到啦！';
+            text = '晚上好，<span style="color:#FF66AA;font-weight:bold;">乃梨</span>和<span style="color:#66AAFF;font-weight:bold;">雨宫</span>的休闲时间到啦！';
         } else if (now > 21 && now <= 23) {
-            text = '<span style="color:#66AAFF;font-weight:bold;">乃梨</span>我正在监督<span style="color:#FF66AA;font-weight:bold;">雨宫</span>睡觉呢！';
+            text = '<span style="color:#FF66AA;font-weight:bold;">乃梨</span>我正在监督<span style="color:#66AAFF;font-weight:bold;">雨宫</span>睡觉呢！';
         } else {
             text = '嗨~ 快来逗我玩吧！';
         }
@@ -150,7 +151,7 @@ function elseActed() {
 function showHitokoto(){
     /* 增加 hitokoto.cn API */
     $.getJSON('https://v1.hitokoto.cn', function(result){
-        var text = '<span style="color:#66AAFF;font-weight:bold;">乃梨</span>和<span style="color:#FF66AA;font-weight:bold;">雨宫</span>感谢<span style="font-weight:bold;">{creator}</span>网友的句子~';
+        var text = '<span style="color:#FF66AA;font-weight:bold;">乃梨</span>和<span style="color:#66AAFF;font-weight:bold;">雨宫</span>感谢<span style="font-weight:bold;">{creator}</span>网友的句子~';
         text = text.render({source: result.from, creator: result.creator});
         showMessage(result.hitokoto, 5000);
         window.setTimeout(function() {showMessage(text, 3000);}, 5000);

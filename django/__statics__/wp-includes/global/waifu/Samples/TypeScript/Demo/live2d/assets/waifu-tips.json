@@ -2,7 +2,7 @@
     "mouseover": [
         {
             "selector": ".fui-info-circle",
-            "text": ["想知道<span style=\"color:#66AAFF;font-weight:bold;\">乃梨</span>我的秘密吗？"]
+            "text": ["想知道<span style=\"color:#FF66AA;font-weight:bold;\">乃梨</span>我的秘密吗？"]
         },
         {
             "selector": ".fui-cross",
@@ -27,15 +27,15 @@
         },
         {
             "selector": ".fui-home",
-            "text": ["点击可以回去<span style=\"color:#66AAFF;font-weight:bold;\">乃梨</span><span style=\"font-weight:bold;\">的主站</span>喔"]
+            "text": ["点击可以回去<span style=\"color:#66AAFF;font-weight:bold;\">雨宫</span><span style=\"font-weight:bold;\">的主站</span>喔"]
         },
         {
             "selector": ".back-to-main",
-            "text": ["点击可以回去<span style=\"color:#66AAFF;font-weight:bold;\">乃梨</span><span style=\"font-weight:bold;\">的主站</span>喔"]
+            "text": ["点击可以回去<span style=\"color:#66AAFF;font-weight:bold;\">雨宫</span><span style=\"font-weight:bold;\">的主站</span>喔"]
         },
         {
             "selector": ".copy-code",
-            "text": ["想让<span style=\"color:#66AAFF;font-weight:bold;\">乃梨</span>帮你ctrl+C吗?"]
+            "text": ["想让<span style=\"color:#FF66AA;font-weight:bold;\">乃梨</span>帮你ctrl+C吗?"]
         },
         {
             "selector": ".fui-chat",

@@ -96,7 +96,7 @@ const TimeLineManager = {
  * lazyload
  * @requires none
  */
-$(() => {
+$(window).on("load", () => {
     let lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
     let active = false;
     const lazyLoad = function() {
@@ -127,6 +127,36 @@ $(() => {
     window.addEventListener("resize",lazyLoad);
     window.addEventListener("orientationchange",lazyLoad);
 });
+$(() => {
+    let lazyTexts = [].slice.call(document.querySelectorAll(".anim"));
+    let active = false;
+    const lazyLoad = function() {
+        if(active !== false) return ;
+        active = true;
+        setTimeout(function(){
+            lazyTexts.forEach(function(lazyText) {
+                if(lazyText.getBoundingClientRect().top > window.innerHeight 
+                || lazyText.getBoundingClientRect().bottom < 0
+                /*|| lazyText.classList.contains('animate')*/)
+                    return ;
+                lazyText.classList.add("animate");
+                lazyTexts = lazyTexts.filter(image => {
+                    return image !== lazyText;
+                });
+                if(lazyTexts.length === 0){
+                    document.removeEventListener("scroll",lazyLoad);
+                    window.removeEventListener("resize",lazyLoad);
+                    window.removeEventListener("orientationchange",lazyLoad);
+                }
+            });
+            active = false;
+        }, 200);
+    }
+    lazyLoad();
+    document.addEventListener("scroll",lazyLoad);
+    window.addEventListener("resize",lazyLoad);
+    window.addEventListener("orientationchange",lazyLoad);
+});
 
 /**
  * jQuery for page scrolling feature
@@ -140,8 +170,10 @@ function pageScroll() {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             if (target.length) {
+                let tarY = (target.offset().top -70);
+                let maxY = document.documentElement.scrollHeight-document.documentElement.clientHeight;
                 $('html, body').animate({
-                    scrollTop: (target.offset().top -70)
+                    scrollTop: tarY < maxY ? tarY : maxY
                 }, 1200, "easeInOutExpo");
                 return false;
             }
@@ -227,6 +259,16 @@ function pageScroll() {
     // Back to top
     var curPos = 0;
     // Show or hide the sticky footer button
+    $(window).off('load.ldBk2top')
+    .on('load.ldBk2top', function(event) {
+        if($(this).scrollTop() > 600){
+            $('.back-to-top').fadeIn(200)
+            $('.lang-to-swi').fadeIn(200)
+        } else{
+            $('.lang-to-swi').fadeOut(200)
+            $('.back-to-top').fadeOut(200)
+        }
+    });
     $(window).off('scroll.btnBk2top')
     .on('scroll.btnBk2top', function(event) {
         if($(this).scrollTop() > 600){
@@ -256,31 +298,37 @@ function pageScroll() {
         });
     });
 
+    // Animate the scroll to bottom
+
+
 } $(pageScroll);
 
 /**
  * 标题彩蛋
  */
 (function(){
-    var OriginTitile = document.title, titleTime;
+    var titleTime;
     document.addEventListener('visibilitychange', () => {
         let lang = window.location.pathname.includes('ja-JP') ? 1 : 0;
-        let titOne = lang == 0 ? "|･ω･｀)你看不见我" : "|･ω･｀)私を見ることはないw";
-        let titTwo = lang == 0 ? "｜д•´)!!被你发现了" : "｜д•´)!!バレるなんて";
+        let titOri = lang == 0 ? "一隅雨雪一炉窝 - 雨雪冰屋" : "雨雪の氷室";
+        let titOne = lang == 0 ? "|･ω･｀)你看不见我 - 雨雪冰屋" : "|･ω･｀)見えないよw - 雨雪の氷室";
+        let titTwo = lang == 0 ? "｜д•´)!!被你发现了 - 雨雪冰屋" : "｜д•´)!!バレたー - 雨雪の氷室";
         if (document.hidden) {
             document.title = titOne;
             clearTimeout(titleTime);
         } else {
             document.title = titTwo;
             titleTime = setTimeout(() => {
-                document.title = OriginTitile;
-            }, 1 * 1000);
+                document.title = titOri;
+            }, 1000);
         }
     });
 })();
 
 /**
  * 打字机效果
+ * @callback head-loading.js
+ * $(".3to1").ready(initTypeWriter);
  */
 function typeWriter(element, placeholder, texts, speed = 100, pause = 1000) {
     let currentTextIndex = 0;
@@ -348,8 +396,7 @@ function initTypeWriter() {
     // 初始化新的打字效果
     const clearTypeWriter = typeWriter(element, placeholder, texts);
     container.data('clearTypeWriter', clearTypeWriter);
-}
-$(initTypeWriter);
+} 
 
 /**
  * 粒子特效（爱心）
@@ -706,12 +753,9 @@ function handleNoClick() {
 // Yes 按钮点击事件
 function handleYesClick() {
     let lang = window.location.pathname.includes('ja-JP') ? 1 : 0;
-    document.getElementById("pix-body").innerHTML = `
-        <div class="set-lang" style="display:none;"></div>
-        <div class="set-lang" style="display:none;"></div>
-        <div class="set-lang" style="display:none;"></div>
+    document.getElementById("pix-body").innerHTML = ` 
         <div class="pix-yes-screen">
-            <div class="pix-yes-text">` +(
+            <div class="pix-yes-text" style="font-family: 'ziti';">` +(
             (lang == 0) ? `!!!喜欢你!! ( >᎑<)♡︎ᐝ`
             : `!!!大好き!! ( >᎑<)♡︎ᐝ`
             ) + `</div>
