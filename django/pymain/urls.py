@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     # re_path(r'^iframe_content.html$', views.iframe),
+    path('db_ask', views.db_ask),
     re_path(r'^(?P<lang>ja-JP)?/?$', views.index),
     re_path(
         r'^rec(?:/(?P<block>[^/]{1,31})(?:/(?P<content>[^/]{1,31})/?)?)?/?$',

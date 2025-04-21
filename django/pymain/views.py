@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from urllib.parse import urlencode
 from django.http import Http404
-
+from mod_iamyukino.tests import Test
 
 # def iframe(request):
 #     return render(request, 'iframe_content.html')
+
+def db_ask(request):
+    content = Test()
+    return render(request,"db_ask.html", {"content":content})
 
 def index(request, lang="index"):
     """
