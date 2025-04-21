@@ -3,18 +3,12 @@ from urllib.parse import urlencode
 from django.http import Http404
 from mod_iamyukino.tests import Test
 
-# def iframe(request):
-#     return render(request, 'iframe_content.html')
-
-def db_ask(request):
-    content = Test()
-    return render(request,"db_ask.html", {"content":content})
 
 def index(request, lang="index"):
     """
     雨雪冰屋主站
     @state on-hold
-    @info 挂起中
+    @info 暂时暂停更新
     """
     if (request.path.endswith("ja-JP/")):
         pstr = request.path
@@ -48,7 +42,8 @@ def ask(request, block="", content=""):
         template_path = f"ask/{block}/index.html"
     
     try:
-        return render(request, template_path)
+        content = Test()
+        return render(request, template_path, {"content":content})
     except:
         raise Http404("views.ask: page not found")
 
@@ -57,7 +52,7 @@ def rec(request, block="", content=""):
     """
     资源站 (图床)
     @state cancelled
-    @info 板块已暂停更新
+    @info 板块有待重构
     """
     suffix_list = ["/", ".html", "/index"]
     for suffix in suffix_list:
@@ -84,7 +79,7 @@ def work(request, block="", content=""):
     """
     工作台 (雨雪博客)
     @state cancelled
-    @info 板块已暂停更新
+    @info 板块有待重构
     """
     suffix_list = ["/", ".html", "/index"]
     for suffix in suffix_list:

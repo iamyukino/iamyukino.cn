@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Ask(models.Model):
     username = models.CharField(max_length=32)
@@ -12,10 +13,13 @@ class Ask(models.Model):
         ]
 
     def __str__(self):
+        beijing_time = self.time.astimezone(timezone.get_current_timezone())
+        formatted_time = beijing_time.strftime("%Y-%m-%d %H:%M:%S")  # 添加时区偏移
+        
         ret = {
-            "username" : self.username,
-            "time" : str(self.time),
-            "site" : self.site,
-            "content" : self.content
+            "username": self.username,
+            "time": formatted_time,
+            "site": self.site,
+            "content": self.content
         }
         return str(ret)
