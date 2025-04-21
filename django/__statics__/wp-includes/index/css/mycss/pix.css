@@ -1,0 +1,101 @@
+#pix-image {
+    background-image:url("/statics/wp-content/global/images/favicon_bd.png");
+    background-color: #d4818e;
+    background-size:100px 100px;
+    width: 100px;
+    height:100px;
+    transition: all 0.3s ease;
+    margin:0 auto;
+    border: 4px solid #68495b;
+}
+#pix-que {
+    margin-top: 5%;
+    font-size: 28px;
+    font-family: 'ziti';
+    line-height: 32px;
+    color: #68495b;
+}
+
+.pix-buttons {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+.pix-buttons #pix-yes {
+    background-color: #d4818e; 
+    color: white;
+}
+.pix-buttons #pix-no {
+    background-color: #6784b1; 
+    color: white;
+    position: relative;
+}
+
+.pix-yes-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+.pix-LY14{
+    --heart-color:#ff5b89;
+    position:relative;
+    width:50px;
+    height:50px;
+    transition:.3s
+}
+.pix-LY14 .pix-LY14d{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    z-index:20;
+    cursor:pointer
+}
+.pix-LY14 .pix-LY14e{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center
+}
+.pix-LY14 .pix-LY14c,.pix-LY14 .pix-LY14b{
+    fill:var(--heart-color);
+    position:absolute
+}
+.pix-LY14 .pix-LY14b{animation:keyframes-pix-LY14b 1s;display:none}
+.pix-LY14 .pix-LY14a{
+    position:absolute;
+    animation:keyframes-pix-LY14a .5s;
+    animation-fill-mode:forwards;
+    display:none;
+    stroke:var(--heart-color);
+    fill:var(--heart-color);
+    stroke-width:2px
+}
+.pix-LY14 .pix-LY14d,.pix-LY14e .pix-LY14b{display:block}
+.pix-LY14 .pix-LY14d,.pix-LY14e .pix-LY14a{display:block}
+@keyframes keyframes-pix-LY14b{
+    0%{transform:scale(0)}
+    25%{transform:scale(1.2)}
+    50%{transform:scale(1);filter:brightness(1.5)}
+}
+@keyframes keyframes-pix-LY14a{
+    0%{transform:scale(0)}
+    50%{opacity:1;filter:brightness(1.5)}
+    100%{transform:scale(1.4);opacity:0;display:none}
+}
+.pix-LY14{
+    left:52px;
+    top:47px;
+}
+.pix-yes-text{
+    position:relative;
+    top:20px;
+    font-size: 28px;
+    color: #68495b;
+}

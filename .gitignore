@@ -1,0 +1,24 @@
+# Node.js webpack
+**/node_modules/*
+
+# vscode cache files
+**/.vscode/*
+
+# apache24 cache files
+*.pid
+
+# ssl key
+*.crt
+*.csr
+*.key
+
+# python byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# django stuff
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal

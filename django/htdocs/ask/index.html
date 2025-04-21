@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>雨雪的棉花糖</title>
+    <style> *{ cursor: url("{% static '/wp-content/global/images/mouse.png' %}"), auto; } </style>
+    <link rel="shortcut icon" href="{% static '/wp-content/global/images/favicon.png' %}" type="image/png">
+    <script src="{% static '/wp-includes/index/js/includes/jquery.min.js' %}"></script>
+</head>
+<body>
+    
+<div class="viewbox">
+    <div style="display: none;">last-edit: 2025-04-19</div>
+    <p>mysql 403: forbidden</p>
+</div>
+    
+<div class="iframe">
+    <!--script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script-->
+    <span id="iframe"></span>
+    <link rel="stylesheet" href="{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css' %}"/>
+    <link rel="stylesheet" href="{% static '/wp-includes/global/js/aplayer/APlayer.min.css' %}">
+    <link rel="stylesheet" href="{% static '/wp-includes/global/js/iframe/iframe.css' %}">
+    <script>
+        const loadQueue = [
+            /* busuanzi */
+            "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",
+            /* APlayer script */
+            "{% static '/wp-includes/global/js/aplayer/APlayer.min.js' %}",
+            "{% static '/wp-includes/global/js/aplayer/Meting.min.js' %}",
+            /* Live2DCubismCore script */
+            "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js' %}",
+            "{% static '/wp-includes/global/waifu/Core/live2dcubismcore.js' %}",
+            /* Build script */
+            "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js' %}",
+            "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js' %}"
+        ];
+        const modulesPath = "{% static '/wp-content/global/waifu/' %}"
+        const modelNames = ['TaoHua', 'mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
+        const waifuTipsUrl = "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json' %}"
+    </script>
+    <script src="{% static '/wp-includes/global/js/iframe/iframe.js' %}"></script>
+</div>
+
+</body>
+</html>

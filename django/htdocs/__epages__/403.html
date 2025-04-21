@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="date" content="2025-04-18">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>エラー! - iamyukino.cn</title>
+    <style> *{ cursor: url("{% static '/wp-content/global/images/mouse.png' %}"), auto; } </style>
+    <link rel="shortcut icon" href="{% static '/wp-content/global/images/favicon.png' %}" type="image/png">
+    <script src="{% static '/wp-includes/index/js/includes/jquery.min.js' %}"></script>
+</head>
+<body>
+
+<div class="viewbox">
+    <link rel="stylesheet" href="{% static '/wp-includes/err/404.css' %}">
+    <div class="error-page">
+    <div class="content">
+        <h1 data-text="403">403</h1>
+        <br><br><br>
+        <h4 data-text="Forbidden (Missing index.html)">Forbidden (Missing index.html)</h4>
+        <p>このアドレスに設定されているサイトには、要求されたファイルは含まれていません</p>
+        <p>もしこれが問題だと思うのなら、バグを報告してください</p>
+        <p style="font-size:50%;"><br>All Rights Reserved. Copyright © 2025 iamyukino.cn</p>
+        <script>function back2lastdoc (){
+            if (history.length > 1) window.history.go(-1);
+            else window.location.href = '/';
+        }</script>
+        <div class="btns">
+            <a onclick="back2lastdoc()">戻る</a>
+            <a href="/work/comment">報告問題</a>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="iframe">
+    <!--script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script-->
+    <span id="iframe"></span>
+    <link rel="stylesheet" href="{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css' %}"/>
+    <link rel="stylesheet" href="{% static '/wp-includes/global/js/aplayer/APlayer.min.css' %}">
+    <link rel="stylesheet" href="{% static '/wp-includes/global/js/iframe/iframe.css' %}">
+    <script>
+        const loadQueue = [
+            /* busuanzi */
+            "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",
+            /* APlayer script */
+            "{% static '/wp-includes/global/js/aplayer/APlayer.min.js' %}",
+            "{% static '/wp-includes/global/js/aplayer/Meting.min.js' %}",
+            /* Live2DCubismCore script */
+            "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js' %}",
+            "{% static '/wp-includes/global/waifu/Core/live2dcubismcore.js' %}",
+            /* Build script */
+            "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js' %}",
+            "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js' %}"
+        ];
+        const modulesPath = "{% static '/wp-content/global/waifu/' %}"
+        const modelNames = ['TaoHua', 'mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
+        const waifuTipsUrl = "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json' %}"
+    </script>
+    <script src="{% static '/wp-includes/global/js/iframe/iframe.js' %}"></script>
+</div>
+
+</body>
+</html>

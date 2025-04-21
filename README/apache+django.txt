@@ -1,0 +1,22 @@
+本地
+环境变量C:\iamyukino.cn\apache24（可能MOD_WSGI_APACHE_ROOTDIR）
+运行pip install mod_wsgi生成.so文件mod_wsgi-express module-config（.pyc后缀改.so）
+
+均需要
+where python
+pip install django
+pip install whitenoise
+cd C:\iamyukino.cn\apache24\bin
+httpd.exe -k install -n 'iamyukino'
+net start iamyukino（httpd.exe -k start -n 'iamyukino'）
+net stop iamyukino（httpd.exe -k stop -n 'iamyukino'）
+httpd.exe -k uninstall -n 'iamyukino'（httpd.exe -k restart -n 'iamyukino'）
+
+测试django
+python manage.py runserver
+
+字体子集压缩
+pip install fonttools
+pip install brotli
+pyftsubset XiaolaiSC.woff2 --text-file=used.txt --output-file=XiaolaiSC.subset.woff2 --flavor=woff2 --no-hinting --desubroutinize
+pyftsubset cjkFonts_allseto_v1.11.ttf --text-file=used.txt --output-file=cjkFonts_allseto_v1.11.subset.woff2 --flavor=woff2 --no-hinting --desubroutinize
