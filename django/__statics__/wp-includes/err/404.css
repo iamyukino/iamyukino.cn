@@ -1,6 +1,7 @@
 *{
     margin: 0;
     font-family: 'Poppins', snams-serif;
+    cursor: url("{% static '/wp-content/global/images/mouse.png' %}"), auto;
 }
 .error-page{
     position: absolute;

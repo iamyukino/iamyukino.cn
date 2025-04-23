@@ -5,10 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="雨雪冰屋是雨宫雪乃的个人网站, 其中包括资源站(图床)、工作台(博客)、棉花糖及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台">
-    <title>
-        {% if la == "zh-CN" %} 一隅雨雪一炉窝 - 雨雪冰屋 {% else %} 雨雪の氷室 {% endif %}
-    </title>
+    <meta name="description" content="“一隅雨雪一炉窝,可能会融化持久堆?”雨雪冰屋是雨宫雪乃的个人网站, 其中包括资源站(图床)、工作台(博客)、棉花糖及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://iamyukino.cn/">
+    <meta property="og:site_name" content="雨雪冰屋">
+    <meta property="og:title" content="雨雪冰屋 - 一隅雨雪一炉窝">
+    <meta property="og:updated_time" content="2025-04-23T20:35:03+08:00">
+    <meta property="og:image" content="http://iamyukino.cn/statics/wp-content/global/images/favicon.png">
+    <meta property="og:description" content="“一隅雨雪一炉窝,可能会融化持久堆?”雨雪冰屋是雨宫雪乃的个人网站, 其中包括资源站(图床)、工作台(博客)、棉花糖及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台">
+
+    <title>{% if la == "zh-CN" %}一隅雨雪一炉窝 - 雨雪冰屋{% else %}雨雪の氷室{% endif %}</title>
     <link rel="shortcut icon" href="{% static '/wp-content/global/images/favicon.png' %}" type="image/png">
     <script src="{% static '/wp-includes/index/js/includes/jquery.min.js' %}"></script>
 </head>
@@ -29,7 +36,10 @@
     </div>
     
 <div class="viewbox">
-    <div style="display: none;">last-edit: 2025-04-19</div>
+    <div style="display:none;">
+        <time itemprop="dateModified" class="date" id="updatetime"
+        datetime="2025-04-23T20:35:03+08:00">2025.04.23 20:35</time>
+    </div>
 <div class="scrollbox">
     <style> .container { margin-left: 30px; margin-top: 20px; } </style>
     <link rel="stylesheet" href="{% static '/wp-includes/index/css/includes/bootstrap.min.css' %}">

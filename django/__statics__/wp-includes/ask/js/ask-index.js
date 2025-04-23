@@ -1,22 +1,19 @@
 $(function(){
-    function questChanged(text) {
-        document.getElementById('current-character-count').textContent = text.length;
+    function questChanged() {
+        const text = document.getElementById('que-text').value;
+        document.getElementById('cur-char-cnt').textContent = text.length;
         var btn = document.getElementById("submit-button");
-        const submit_button = document.getElementById('submit-button');
         if (text.length > 300) {
-            submit_button.disabled = true;
+            btn.disabled = true;
             btn.style.opacity = 0.4;
         } else {
-            submit_button.disabled = false;
+            btn.disabled = false;
             btn.style.opacity = 1;
         }
     }
-    document.getElementById('que-text').addEventListener('keyup', function(event){
-        questChanged(event.target.value)
-    });
-    document.getElementById('nickname').addEventListener('keyup', function(event){
-        questChanged(event.target.value)
-    });
+    $('#que-text,#nickname').on('compositionend', questChanged);
+    $('#que-text,#nickname').on('input', questChanged);
+    $('#que-text,#nickname').on('keyup', questChanged);
 });
 
 async function submitQuestion() {

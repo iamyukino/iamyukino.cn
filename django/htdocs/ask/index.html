@@ -5,20 +5,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    {% csrf_token %}
+    
     <title>雨雪的棉花糖</title>
-    <style> *{ cursor: url("{% static '/wp-content/global/images/mouse.png' %}"), auto; } </style>
     <link rel="shortcut icon" href="{% static '/wp-content/global/images/favicon.png' %}" type="image/png">
     <script src="{% static '/wp-includes/index/js/includes/jquery.min.js' %}"></script>
-    {% csrf_token %}
 </head>
 <body>
 
 <div class="viewbox">
-    <div style="display: none;">last-edit: 2025-04-19</div>
+    <div style="display:none;">
+        <time itemprop="dateModified" class="date" id="updatetime"
+        datetime="2025-04-23T20:35:03+08:00">2025.04.23 20:35</time>
+    </div>
     <link rel="stylesheet" href="{% static '/wp-includes/ask/css/ask-style.css' %}">
     <script> var m_csrf_token = '{{ csrf_token }}'; </script>
     <script src="{% static '/wp-includes/ask/js/ask-index.js' %}"></script>
-
     <section class="index" style="max-width:500px;">
         <div class="profile"><a href="/">
             <div class="header">
@@ -32,7 +35,7 @@
             <div class="character-count">
                 <label for="nickname">昵称：</label>
                 <input type="text" id="nickname" maxlength="32">
-                <span class="right"><span id="current-character-count">0</span>/300字</span>
+                <span class="right"><span id="cur-char-cnt">0</span>/300字</span>
             </div>
             <div id="result"></div>
             <div class="submit-button">
