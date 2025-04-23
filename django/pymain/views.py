@@ -5,11 +5,6 @@ from mod_iamyukino.tests import Test
 
 
 def index(request, lang="index"):
-    """
-    雨雪冰屋主站
-    @state on-hold
-    @info 暂时暂停更新
-    """
     if (request.path.endswith("ja-JP/")):
         pstr = request.path
         return redirect(pstr.rstrip("/"))
@@ -19,88 +14,32 @@ def index(request, lang="index"):
     except:
         raise Http404("views.index: page not found")
 
+def from_views(ori, request, block, content):    
+    suffix_list = ["/", ".html", "/index"]
+    for suffix in suffix_list:
+        if request.path.endswith(suffix):
+            new_url = request.path.removesuffix(suffix)
+            if request.GET:
+                new_url += '?' + urlencode(request.GET)
+            return redirect(new_url)
+    if (block and content):
+        template_path = f"{ori}/{block}/{content}.html"
+    elif (not block):
+        template_path = f"{ori}/index.html"
+    else:
+        template_path = f"{ori}/{block}/index.html"
+    try:
+        return render(request, template_path)
+    except:
+        raise Http404(f"views.{ori}: page not found")
+
 
 def ask(request, block="", content=""):
-    """
-    棉花糖 (Q&A)
-    @state in-progress
-    @info 在写了在写了
-    """
-    suffix_list = ["/", ".html", "/index"]
-    for suffix in suffix_list:
-        if request.path.endswith(suffix):
-            new_url = request.path.removesuffix(suffix)
-            if request.GET:
-                new_url += '?' + urlencode(request.GET)
-            return redirect(new_url)
-
-    if (block and content):
-        template_path = f"ask/{block}/{content}.html"
-    elif (not block):
-        template_path = "ask/index.html"
-    else:
-        template_path = f"ask/{block}/index.html"
-    
-    try:
-        content = Test()
-        return render(request, template_path, {"content":content})
-    except:
-        raise Http404("views.ask: page not found")
-
-
+    return from_views("ask", request, block, content)
 def rec(request, block="", content=""):
-    """
-    资源站 (图床)
-    @state cancelled
-    @info 板块有待重构
-    """
-    suffix_list = ["/", ".html", "/index"]
-    for suffix in suffix_list:
-        if request.path.endswith(suffix):
-            new_url = request.path.removesuffix(suffix)
-            if request.GET:
-                new_url += '?' + urlencode(request.GET)
-            return redirect(new_url)
-    
-    if (block and content):
-        template_path = f"rec/{block}/{content}.html"
-    elif (not block):
-        template_path = "rec/index.html"
-    else:
-        template_path = f"rec/{block}/index.html"
-        
-    try:
-        return render(request, template_path)
-    except:
-        raise Http404("views.rec: page not found")
-
-
+    return from_views("rec", request, block, content)
 def work(request, block="", content=""):
-    """
-    工作台 (雨雪博客)
-    @state cancelled
-    @info 板块有待重构
-    """
-    suffix_list = ["/", ".html", "/index"]
-    for suffix in suffix_list:
-        if request.path.endswith(suffix):
-            new_url = request.path.removesuffix(suffix)
-            if request.GET:
-                new_url += '?' + urlencode(request.GET)
-            return redirect(new_url)
-    
-    if (block and content):
-        template_path = f"work/{block}/{content}.html"
-    elif (not block):
-        template_path = "work/index.html"
-    else:
-        template_path = f"work/{block}/index.html"
-    
-    try:
-        return render(request, template_path)
-    except:
-        raise Http404("views.work: page not found")
-
+    return from_views("work", request, block, content)
 
 def err404(request, exception):
     return render(request, '__epages__/404.html', status=404)

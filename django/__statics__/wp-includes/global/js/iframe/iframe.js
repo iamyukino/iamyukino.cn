@@ -43,7 +43,6 @@ $(window).on('load', function() {
     }, Promise.resolve());
     loadSequence.then(function() {
         initModel(modulesPath, modelNames, waifuTipsUrl);
-        console.log("iframe load completed.");
         isInitialized = true;
     });
 });

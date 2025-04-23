@@ -99,7 +99,7 @@ export class LAppLive2DManager {
   public onDefaultTap(x: number, y: number): void {
     if (LAppDefine.DebugLogEnable) {
       LAppPal.printMessage(
-        `[APP]tap point: {x: ${x.toFixed(2)} y: ${y.toFixed(2)}}`
+        `[APP][I]tap point: {x: ${x.toFixed(2)} y: ${y.toFixed(2)}}`
       );
     }
 
@@ -107,14 +107,14 @@ export class LAppLive2DManager {
       if (this._models.at(i).hitTest(LAppDefine.HitAreaNameHead, x, y)) {
         if (LAppDefine.DebugLogEnable) {
           LAppPal.printMessage(
-            `[APP]hit area: [${LAppDefine.HitAreaNameHead}]`
+            `[APP][I]hit area: [${LAppDefine.HitAreaNameHead}]`
           );
         }
         this._models.at(i).setRandomExpression();
       } else if (this._models.at(i).hitTest(LAppDefine.HitAreaNameBody, x, y)) {
         if (LAppDefine.DebugLogEnable) {
           LAppPal.printMessage(
-            `[APP]hit area: [${LAppDefine.HitAreaNameBody}]`
+            `[APP][I]hit area: [${LAppDefine.HitAreaNameBody}]`
           );
         }
         this._models
@@ -140,7 +140,7 @@ export class LAppLive2DManager {
    public onTap(x: number, y: number): void {
     if (LAppDefine.DebugLogEnable) {
       LAppPal.printMessage(
-        `[APP]tap point: {x: ${x.toFixed(2)} y: ${y.toFixed(2)}}`
+        `[APP][I]tap point: {x: ${x.toFixed(2)} y: ${y.toFixed(2)}}`
       );
     }
 
@@ -220,7 +220,7 @@ export class LAppLive2DManager {
   public  async changeScene(index: number): Promise<void> {
     this._sceneIndex = index;
     if (LAppDefine.DebugLogEnable) {
-      LAppPal.printMessage(`[APP]model index: ${this._sceneIndex}`);
+      LAppPal.printMessage(`[APP][I]model index: ${this._sceneIndex}`);
     }
 
     // ModelDir[]に保持したディレクトリ名から

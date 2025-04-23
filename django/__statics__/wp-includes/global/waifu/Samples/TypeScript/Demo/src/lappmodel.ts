@@ -545,7 +545,7 @@ export class LAppModel extends CubismUserModel {
       this._motionManager.setReservePriority(priority);
     } else if (!this._motionManager.reserveMotion(priority)) {
       if (this._debugMode) {
-        LAppPal.printMessage("[APP]can't start motion.");
+        LAppPal.printMessage("[APP][I]can't start motion.");
       }
       return InvalidMotionQueueEntryHandleValue;
     }
@@ -599,7 +599,7 @@ export class LAppModel extends CubismUserModel {
     }
 
     if (this._debugMode) {
-      LAppPal.printMessage(`[APP]start motion: [${group}_${no}`);
+      LAppPal.printMessage(`[APP][I]start motion: [${group}_${no}`);
     }
     return this._motionManager.startMotionPriority(
       motion,
@@ -640,7 +640,7 @@ export class LAppModel extends CubismUserModel {
     const motion: ACubismMotion = this._expressions.getValue(expressionId);
 
     if (this._debugMode) {
-      LAppPal.printMessage(`[APP]expression: [${expressionId}]`);
+      LAppPal.printMessage(`[APP][I]expression: [${expressionId}]`);
     }
 
     if (motion != null) {
@@ -651,7 +651,7 @@ export class LAppModel extends CubismUserModel {
       );
     } else {
       if (this._debugMode) {
-        LAppPal.printMessage(`[APP]expression[${expressionId}] is null`);
+        LAppPal.printMessage(`[APP][I]expression[${expressionId}] is null`);
       }
     }
   }
@@ -722,7 +722,7 @@ export class LAppModel extends CubismUserModel {
       const name = `${group}_${i}`;
       if (this._debugMode) {
         LAppPal.printMessage(
-          `[APP]load motion: ${motionFileName} => [${name}]`
+          `[APP][I]load motion: ${motionFileName} => [${name}]`
         );
       }
 

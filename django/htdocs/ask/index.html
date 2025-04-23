@@ -9,14 +9,73 @@
     <style> *{ cursor: url("{% static '/wp-content/global/images/mouse.png' %}"), auto; } </style>
     <link rel="shortcut icon" href="{% static '/wp-content/global/images/favicon.png' %}" type="image/png">
     <script src="{% static '/wp-includes/index/js/includes/jquery.min.js' %}"></script>
+    {% csrf_token %}
 </head>
 <body>
-    
+
 <div class="viewbox">
     <div style="display: none;">last-edit: 2025-04-19</div>
-    <p>{{content}}</p>
+    <link rel="stylesheet" href="{% static '/wp-includes/ask/css/ask-style.css' %}">
+    <script> var m_csrf_token = '{{ csrf_token }}'; </script>
+    <script src="{% static '/wp-includes/ask/js/ask-index.js' %}"></script>
+
+    <section class="index" style="max-width:500px;">
+        <div class="profile"><a href="/">
+            <div class="header">
+                <img src="{% static '/wp-content/global/images/favicon.png' %}">
+            </div>
+            <div class="content"><p>雨雪ちゃん</p></div>
+        </a></div>
+        <p>提问完全匿名，欢迎投稿~</p>
+        <div class="question-form">
+            <textarea id="que-text" placeholder="匿名但请保持礼貌哦"></textarea>
+            <div class="character-count">
+                <label for="nickname">昵称：</label>
+                <input type="text" id="nickname" maxlength="32">
+                <span class="right"><span id="current-character-count">0</span>/300字</span>
+            </div>
+            <div id="result"></div>
+            <div class="submit-button">
+                <button class="btn-outline-info" id="submit-button" onclick="submitQuestion()">提交问题</button>
+            </div>
+        </div>
+        <div class="question-list">
+            <div class="question-wrapper">
+                <a href="javascript:;"><div class="question">
+                    <div class="header">
+                        <span class="badge">2023/11/15</span>
+                    </div>
+                    <p>测试</p>
+                </div></a>
+            </div>
+            <div class="question-wrapper">
+                <a href="javascript:;"><div class="question">
+                    <div class="header">
+                        <span class="badge">2023/11/15</span>
+                    </div>
+                    <p>测试2</p>
+                </div></a>
+            </div>
+            <div class="question-wrapper">
+                <a href="javascript:;"><div class="question">
+                    <div class="header">
+                        <span class="badge">2023/11/15</span>
+                    </div>
+                    <p>测试3</p>
+                </div></a>
+            </div>
+            <div class="next-prev-page">
+                <div><a href="javascript:;">上一页</a></div>
+                <div><a href="javascript:;">下一页</a></div>
+            </div>
+        </span>
+    </section> 
+    <footer>
+        <div><p><a href="/">©2025</a>&nbsp;<a href="/">iamyukino.cn</a></p></div>
+    </footer>
 </div>
-    
+
+
 <div class="iframe">
     <!--script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script-->

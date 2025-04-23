@@ -9473,18 +9473,18 @@ var LAppLive2DManager = (function () {
     };
     LAppLive2DManager.prototype.onDefaultTap = function (x, y) {
         if (LAppDefine.DebugLogEnable) {
-            lapppal_1.LAppPal.printMessage("[APP]tap point: {x: ".concat(x.toFixed(2), " y: ").concat(y.toFixed(2), "}"));
+            lapppal_1.LAppPal.printMessage("[APP][I]tap point: {x: ".concat(x.toFixed(2), " y: ").concat(y.toFixed(2), "}"));
         }
         for (var i = 0; i < this._models.getSize(); i++) {
             if (this._models.at(i).hitTest(LAppDefine.HitAreaNameHead, x, y)) {
                 if (LAppDefine.DebugLogEnable) {
-                    lapppal_1.LAppPal.printMessage("[APP]hit area: [".concat(LAppDefine.HitAreaNameHead, "]"));
+                    lapppal_1.LAppPal.printMessage("[APP][I]hit area: [".concat(LAppDefine.HitAreaNameHead, "]"));
                 }
                 this._models.at(i).setRandomExpression();
             }
             else if (this._models.at(i).hitTest(LAppDefine.HitAreaNameBody, x, y)) {
                 if (LAppDefine.DebugLogEnable) {
-                    lapppal_1.LAppPal.printMessage("[APP]hit area: [".concat(LAppDefine.HitAreaNameBody, "]"));
+                    lapppal_1.LAppPal.printMessage("[APP][I]hit area: [".concat(LAppDefine.HitAreaNameBody, "]"));
                 }
                 this._models
                     .at(i)
@@ -9494,7 +9494,7 @@ var LAppLive2DManager = (function () {
     };
     LAppLive2DManager.prototype.onTap = function (x, y) {
         if (LAppDefine.DebugLogEnable) {
-            lapppal_1.LAppPal.printMessage("[APP]tap point: {x: ".concat(x.toFixed(2), " y: ").concat(y.toFixed(2), "}"));
+            lapppal_1.LAppPal.printMessage("[APP][I]tap point: {x: ".concat(x.toFixed(2), " y: ").concat(y.toFixed(2), "}"));
         }
         for (var i = 0; i < this._models.getSize(); i++) {
             if (x > -1 && x < 1 && y > -1 && y < 1) {
@@ -9543,7 +9543,7 @@ var LAppLive2DManager = (function () {
                     case 0:
                         this._sceneIndex = index;
                         if (LAppDefine.DebugLogEnable) {
-                            lapppal_1.LAppPal.printMessage("[APP]model index: ".concat(this._sceneIndex));
+                            lapppal_1.LAppPal.printMessage("[APP][I]model index: ".concat(this._sceneIndex));
                         }
                         model = LAppDefine.resourcesConfig.getModelNames()[index];
                         modelPath = LAppDefine.resourcesConfig.getResourcesPath() + model + '/';
@@ -9983,7 +9983,7 @@ var LAppModel = (function (_super) {
         }
         else if (!this._motionManager.reserveMotion(priority)) {
             if (this._debugMode) {
-                lapppal_1.LAppPal.printMessage("[APP]can't start motion.");
+                lapppal_1.LAppPal.printMessage("[APP][I]can't start motion.");
             }
             return cubismmotionqueuemanager_1.InvalidMotionQueueEntryHandleValue;
         }
@@ -10019,7 +10019,7 @@ var LAppModel = (function (_super) {
             this._wavFileHandler.start(path);
         }
         if (this._debugMode) {
-            lapppal_1.LAppPal.printMessage("[APP]start motion: [".concat(group, "_").concat(no));
+            lapppal_1.LAppPal.printMessage("[APP][I]start motion: [".concat(group, "_").concat(no));
         }
         return this._motionManager.startMotionPriority(motion, autoDelete, priority);
     };
@@ -10033,14 +10033,14 @@ var LAppModel = (function (_super) {
     LAppModel.prototype.setExpression = function (expressionId) {
         var motion = this._expressions.getValue(expressionId);
         if (this._debugMode) {
-            lapppal_1.LAppPal.printMessage("[APP]expression: [".concat(expressionId, "]"));
+            lapppal_1.LAppPal.printMessage("[APP][I]expression: [".concat(expressionId, "]"));
         }
         if (motion != null) {
             this._expressionManager.startMotionPriority(motion, false, LAppDefine.PriorityForce);
         }
         else {
             if (this._debugMode) {
-                lapppal_1.LAppPal.printMessage("[APP]expression[".concat(expressionId, "] is null"));
+                lapppal_1.LAppPal.printMessage("[APP][I]expression[".concat(expressionId, "] is null"));
             }
         }
     };
@@ -10079,7 +10079,7 @@ var LAppModel = (function (_super) {
             var motionFileName = this_2._modelSetting.getMotionFileName(group, i);
             var name_2 = "".concat(group, "_").concat(i);
             if (this_2._debugMode) {
-                lapppal_1.LAppPal.printMessage("[APP]load motion: ".concat(motionFileName, " => [").concat(name_2, "]"));
+                lapppal_1.LAppPal.printMessage("[APP][I]load motion: ".concat(motionFileName, " => [").concat(name_2, "]"));
             }
             fetch("".concat(this_2._modelHomeDir).concat(motionFileName))
                 .then(function (response) { return response.arrayBuffer(); })
@@ -10403,7 +10403,7 @@ var LAppView = (function () {
             var x = this._deviceToScreen.transformX(this._touchManager.getX());
             var y = this._deviceToScreen.transformY(this._touchManager.getY());
             if (LAppDefine.DebugTouchLogEnable) {
-                lapppal_1.LAppPal.printMessage("[APP]touchesEnded x: ".concat(x, " y: ").concat(y));
+                lapppal_1.LAppPal.printMessage("[APP][I]touchesEnded x: ".concat(x, " y: ").concat(y));
             }
             live2DManager.onTap(x, y);
         }

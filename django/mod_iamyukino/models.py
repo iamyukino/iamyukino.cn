@@ -1,25 +1,29 @@
 from django.db import models
 from django.utils import timezone
+import json
 
 class Ask(models.Model):
-    username = models.CharField(max_length=32)
-    time = models.DateTimeField(auto_now_add=True)
-    site = models.CharField(max_length=128, null=True, blank=True)
-    content = models.TextField(null=True, blank=True)
+    nickname = models.CharField(max_length=32, null=False, blank=False)
+    que_time = models.DateTimeField(default=timezone.now)
+    que_text = models.TextField(null=False, blank=False, default="no-content")
+    ans_time = models.DateTimeField(null=True, blank=True)
+    ans_text = models.TextField(null=True, blank =True)
 
     class Meta:
+        db_table = 't_ask'
         indexes = [
-            models.Index(fields=['time'], name='idx_time')
+            models.Index(fields=['que_time'], name='idx_que_time')
         ]
 
     def __str__(self):
-        beijing_time = self.time.astimezone(timezone.get_current_timezone())
-        formatted_time = beijing_time.strftime("%Y-%m-%d %H:%M:%S")  # 添加时区偏移
-        
+        s_que_time = self.que_time.astimezone(timezone.get_current_timezone()).strftime("%Y-%m-%d %H:%M")
+        s_ans_time = self.ans_time.astimezone(timezone.get_current_timezone()).strftime("%Y-%m-%d %H:%M") if self.ans_time else "null"
+        s_ans_text = self.ans_text if self.ans_time else "null"
         ret = {
-            "username": self.username,
-            "time": formatted_time,
-            "site": self.site,
-            "content": self.content
+            "nickname": self.nickname,
+            "que_time": s_que_time,
+            "que_text": self.que_text,
+            "ans_time": s_ans_time,
+            "ans_text": s_ans_text
         }
-        return str(ret)
+        return json.dumps(ret)

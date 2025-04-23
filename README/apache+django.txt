@@ -42,27 +42,10 @@ FLUSH PRIVILEGES;
 exit
 mysql -u iamyukino -p
 # navicat分别连接root和iamyukino
+
 cd c:\iamyukino.cn\django
 python manage.py makemigrations mod_iamyukino
 python manage.py migrate
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+测试post：
+curl -X POST https://iamyukino.cn/api/x/submit_ask/ -H "Content-Type: application/json"  -d "{\"nickname\":\"testuser\", \"que_text\":\"Hello, World!\"}"
