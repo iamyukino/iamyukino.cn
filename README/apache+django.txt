@@ -32,6 +32,7 @@ pyftsubset cjkFonts_allseto_v1.11.ttf --text-file=used.txt --output-file=cjkFont
 下载https://aka.ms/vs/16/release/vc_redist.x64.exe
 pip install mysql
 pip install pymysql
+pip install requests
 # 下载mysql&navicat（windowsserver2012最高支持mysql 8.1.0）
 # 运行mysql创建root(PASSWORD_M=)和iamyukino(PASSWORD_D1)账号
 # 环境变量path加C:\Program Files\MySQL\MySQL Server 8.1\bin

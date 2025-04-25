@@ -77,10 +77,119 @@ async function submitQuestion() {
             throw new Error(result.message || '未知错误');
         }
         result_text = `提交成功(${result.id}): ${result.json}`;
-        showResult('success', `${result_text.slice(0, 100)}...`);
+        is_too_long = result_text.length > 100 ? '...' : '';
+        showResult('success', `${result_text.slice(0, 100)}${is_too_long}`);
+        loadQuestions(1);
     } catch (error) {
         result_text = `提交失败: ${error.message}`;
-        showResult('error', `${result_text.slice(0, 100)}...`);
+        is_too_long = result_text.length > 100 ? '...' : '';
+        showResult('error', `${result_text.slice(0, 100)}${is_too_long}`);
         console.error(error);
     }
 }
+
+function loadQuestions(page) {
+    $.ajax({
+        url: '/api/x/get_asks/',
+        type: 'GET',
+        data: { page: page },
+        headers: { 'X-CSRFToken': m_csrf_token },
+        success: function(response) {
+            const container = $('.question-list');
+            container.empty();
+            response.asks.forEach(ask => {
+                const answerDiv = ask.ans_text ? 
+                    `<div class="answer"><p>${ask.ans_text}</p></div>` : 
+                    '<div class="answer" style="display:none;"></div>';
+                const deleteBtn = ask.can_delete ? 
+                `<button class="delete-btn" data-id="${ask.id}">撤回</button>` : '';
+                const questionHtml = ` 
+                    <div class="question-wrapper">
+                        <a>
+                            <div class="question">
+                                <div class="header">
+                                    ${deleteBtn}
+                                    <span class="badge">${ask.que_time}</span>
+                                    <span class="author">${ask.nickname}</span>
+                                </div>
+                                <p>${ask.que_text}</p>
+                                ${answerDiv}
+                            </div>
+                        </a>
+                    </div>`;
+                container.append(questionHtml);
+            });
+            const paginationHtml = `
+                <div class="next-prev-page">
+                    <div>
+                        ${response.current_page > 1 ? 
+                            `<a onclick="loadQuestions(${response.current_page - 1})">上一页</a>` : 
+                            '<a class="disabled">到头啦</a>'}
+                    </div>
+                    <span class="page-indicator">
+                        第 ${response.current_page} / ${response.total_pages} 页
+                    </span>
+                    <div>
+                        ${response.current_page < response.total_pages ? 
+                            `<a onclick="loadQuestions(${response.current_page + 1})">下一页</a>` : 
+                            '<a class="disabled">到尾啦</a>'}
+                    </div>
+                </div>`;
+            container.append(paginationHtml);
+        },
+        error: function(xhr) {
+            console.error('Error:', xhr.statusText);
+        }
+    });
+}
+$(document).ready(function() {
+    loadQuestions(1);
+});
+
+$(() => {
+    let currentConfirmingBtn = null;
+    $(document).on('click', '.delete-btn', function() {
+        const btn = $(this);
+        const askId = btn.data('id');
+        
+        if(currentConfirmingBtn && currentConfirmingBtn[0] !== btn[0]) {
+            currentConfirmingBtn.text('撤回').removeClass('confirming');
+        }
+        if(btn.text() === '撤回') {
+            btn.text('确认撤回？').addClass('confirming');
+            currentConfirmingBtn = btn;
+        } else if(btn.text() === '确认撤回？') {
+            btn.prop('disabled', true).text('处理中...');
+            $.ajax({
+                url: `/api/x/delete_ask/${askId}/`,
+                method: 'DELETE',
+                headers: { 'X-CSRFToken': m_csrf_token },
+                success: () => {
+                    btn.text('撤回成功').prop('disabled', false).removeClass('confirming');
+                    btn.css('background', '#18c440');
+                    setTimeout(() => {
+                        loadQuestions(1);
+                    }, 800);
+                },
+                error: (xhr) => {
+                    btn.text('撤回失败').prop('disabled', false).removeClass('confirming');
+                    setTimeout(() => {
+                        btn.text('撤回').css('opacity', 1);
+                    }, 1500);
+                    btn.css('opacity', 0.5);
+                    let count = 0;
+                    const shake = setInterval(() => {
+                        btn.css('transform', `translateX(${count++ % 2 ? 5 : -5}px)`);
+                        if(count >= 6) {
+                            clearInterval(shake);
+                            btn.css('transform', '');
+                        }
+                    }, 50);
+                },
+                complete: () => {
+                    currentConfirmingBtn = null;
+                }
+            });
+        }
+    });
+});

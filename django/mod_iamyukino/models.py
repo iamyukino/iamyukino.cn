@@ -4,8 +4,10 @@ import json
 
 class Ask(models.Model):
     nickname = models.CharField(max_length=32, null=False, blank=False)
+    authorip = models.CharField(max_length=16, null=False, blank=False, default="0.0.0.0")
+    autagent = models.CharField(max_length=64, null=False, blank=False, default="unknown")
     que_time = models.DateTimeField(default=timezone.now)
-    que_text = models.TextField(null=False, blank=False, default="no-content")
+    que_text = models.TextField(null=False, blank=False)
     ans_time = models.DateTimeField(null=True, blank=True)
     ans_text = models.TextField(null=True, blank =True)
 
@@ -20,10 +22,10 @@ class Ask(models.Model):
         s_ans_time = self.ans_time.astimezone(timezone.get_current_timezone()).strftime("%Y-%m-%d %H:%M") if self.ans_time else "null"
         s_ans_text = self.ans_text if self.ans_time else "null"
         ret = {
-            "nickname": self.nickname,
-            "que_time": s_que_time,
-            "que_text": self.que_text,
-            "ans_time": s_ans_time,
-            "ans_text": s_ans_text
+            "author": self.nickname,
+            "q_time": s_que_time,
+            "q_text": self.que_text,
+            "a_time": s_ans_time,
+            "a_text": s_ans_text
         }
         return json.dumps(ret)
