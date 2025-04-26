@@ -101,11 +101,12 @@ span.badge {
   color: white;
   background-color: #4f8bae;
   border-radius: 15px;
-  padding: 2px 10px;
+  padding: 2px 10px 2px 10px;
 }
 span.author {
   font-size: 14px;
   margin-left: 8px;
+  padding: 2px 0px 2px 0px;
 }
 
 #result {
@@ -136,7 +137,10 @@ div.question-form textarea {
   border: 2px solid #2c365d;
   padding: 22px;
   font-size: 16px;
+  resize: none;
   color: #777;
+  background-color: #fff;
+  word-break: break-all;
 }
 div.question-form input {
   box-sizing: border-box;
@@ -145,6 +149,87 @@ div.question-form input {
   font-size: 16px;
   color: #777;
 }
+
+.que-text {
+  position: relative;
+}
+
+.kmj-btn {
+  position: absolute;
+  bottom: 18px;
+  right: 51px;
+  border: none;
+  fill: #7c7873;
+  background: transparent;
+}
+.kmj-btn:hover {
+  fill: #66b1ff;
+}
+.view-btn {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  border: none;
+  fill: #7c7873;
+  background: transparent;
+}
+.view-btn:hover {
+  fill: #66b1ff;
+}
+
+.kmj-panel {
+  display: none;
+  margin-bottom: 2px;
+  padding: 7px;
+  border-radius: 4px;
+  width: 100%;
+  height: 70px;
+  background: white;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.kmj-panel.show {
+  display: block;
+}
+.view-panel {
+  display: none;
+  margin-bottom: 2px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: 100%;
+  height: 70px;
+  font-size: 16px;
+  background: white;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  overflow-y: auto;
+  
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.view-panel.show {
+  display: block;
+}
+.view-panel.show::before{
+  content: 'Q：';
+}
+
+.kmj-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  min-width: 50px;
+  float: left;
+  transition: background 0.2s;
+}
+.kmj-img {
+  padding: 0px 3px 3px 3px;
+  vertical-align: text-bottom;
+}
+
 div.question-form .submit-button {
   margin-top: 20px;
   text-align: center;
@@ -168,6 +253,7 @@ div.question-wrapper a div.question p {
   text-align: left;
   white-space: pre-wrap;
   margin-bottom: 0px;
+  word-break: break-all;
 }
 
 

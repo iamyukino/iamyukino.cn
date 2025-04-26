@@ -1,20 +1,38 @@
-$(function(){
-    function questChanged() {
-        const text = document.getElementById('que-text').value;
-        document.getElementById('cur-char-cnt').textContent = text.length;
-        var btn = document.getElementById("submit-button");
-        if (text.length > 300) {
-            btn.disabled = true;
-            btn.style.opacity = 0.4;
-        } else {
-            btn.disabled = false;
-            btn.style.opacity = 1;
+function escapeHTML(text, b_kmj) {
+    const kmjtext = text.replace(/[&<>"']/g, (m) => ({
+        '&': '&amp;', '<': '&lt;',
+        '>': '&gt;',  '"': '&quot;',
+        "'": '&#39;'
+      }[m]));
+    return b_kmj ? kmjtext.replace(/&amp;#(\d{2});/g, (_, numStr) => {
+        const num = parseInt(numStr, 10);
+        if (num >= 10 && num <= 34) {
+            return `<img src="/statics/wp-content/ask/images/kmj/${num}.jpg" alt="&amp;#${num};" class="kmj-img" />`;
         }
+        return `&amp;#${numStr};`;
+    }) : kmjtext;
+};
+
+function questChanged() {
+    const text = document.getElementById('que-text').value;
+    document.getElementById('cur-char-cnt').textContent = text.length;
+
+    const previewPanel = document.querySelector('.view-panel');
+    const newtext = escapeHTML(text, true);
+    previewPanel.innerHTML = newtext;
+
+    var btn = document.getElementById("submit-button");
+    if (text.length > 300) {
+        btn.disabled = true;
+        btn.style.opacity = 0.4;
+    } else {
+        btn.disabled = false;
+        btn.style.opacity = 1;
     }
-    $('#que-text,#nickname').on('compositionend', questChanged);
-    $('#que-text,#nickname').on('input', questChanged);
-    $('#que-text,#nickname').on('keyup', questChanged);
-});
+}
+$('#que-text,#nickname').on('input', questChanged);
+// $('#que-text,#nickname').on('compositionend', questChanged);
+// $('#que-text,#nickname').on('keyup', questChanged);
 
 async function submitQuestion() {
     showResult = (type, message) => {
@@ -76,7 +94,8 @@ async function submitQuestion() {
         if (!response.ok) {
             throw new Error(result.message || '未知错误');
         }
-        result_text = `提交成功(${result.id}): ${result.json}`;
+        // result_text = `提交成功(${result.id}): ${result.json}`;
+        result_text = `提交成功(${result.id}): 问题被回复前仅自己可见/可撤回`;
         is_too_long = result_text.length > 100 ? '...' : '';
         showResult('success', `${result_text.slice(0, 100)}${is_too_long}`);
         loadQuestions(1);
@@ -98,8 +117,11 @@ function loadQuestions(page) {
             const container = $('.question-list');
             container.empty();
             response.asks.forEach(ask => {
+                const safeQueText = escapeHTML(ask.que_text, true);
+                const safeNickname = escapeHTML(ask.nickname, false);
+                const safeAnsText = ask.ans_text ? escapeHTML(ask.ans_text, true) : '';
                 const answerDiv = ask.ans_text ? 
-                    `<div class="answer"><p>${ask.ans_text}</p></div>` : 
+                    `<div class="answer"><p>${safeAnsText}</p></div>` : 
                     '<div class="answer" style="display:none;"></div>';
                 const deleteBtn = ask.can_delete ? 
                 `<button class="delete-btn" data-id="${ask.id}">撤回</button>` : '';
@@ -110,9 +132,9 @@ function loadQuestions(page) {
                                 <div class="header">
                                     ${deleteBtn}
                                     <span class="badge">${ask.que_time}</span>
-                                    <span class="author">${ask.nickname}</span>
+                                    <span class="author">${safeNickname}</span>
                                 </div>
-                                <p>${ask.que_text}</p>
+                                <p>${safeQueText}</p>
                                 ${answerDiv}
                             </div>
                         </a>
@@ -158,6 +180,12 @@ $(() => {
         if(btn.text() === '撤回') {
             btn.text('确认撤回？').addClass('confirming');
             currentConfirmingBtn = btn;
+            $(document).one('click.rmStateDeleteBtn', function(e) {
+                if (currentConfirmingBtn && !$(e.target).closest('.delete-btn').length) {
+                    currentConfirmingBtn.text('撤回').removeClass('confirming');
+                    currentConfirmingBtn = null;
+                }
+            });
         } else if(btn.text() === '确认撤回？') {
             btn.prop('disabled', true).text('处理中...');
             $.ajax({
@@ -169,7 +197,7 @@ $(() => {
                     btn.css('background', '#18c440');
                     setTimeout(() => {
                         loadQuestions(1);
-                    }, 800);
+                    }, 1200);
                 },
                 error: (xhr) => {
                     btn.text('撤回失败').prop('disabled', false).removeClass('confirming');
@@ -192,4 +220,62 @@ $(() => {
             });
         }
     });
+});
+
+$(()=>{
+    const textarea = document.getElementById('que-text');
+    const kmjBtn = document.querySelector('.kmj-btn');
+    const viewBtn = document.querySelector('.view-btn');
+    const kmjPanel = document.querySelector('.kmj-panel');
+    const viewPanel = document.querySelector('.view-panel');
+
+    const panelContent = document.createDocumentFragment();
+    for (let i = 10; i < 34; i++) {
+        const wrapper = document.createElement('i');
+        wrapper.className = 'kmj-item';
+        wrapper.title = `&#${i};`;
+        const kmj = document.createElement('img');
+        kmj.src = `/statics/wp-content/ask/images/kmj/${i}.jpg`;
+        kmj.dataset.index = i;
+        kmj.alt = `&#${i};`;
+        wrapper.appendChild(kmj);
+        kmj.addEventListener('click', insertkmj);
+        panelContent.appendChild(wrapper);
+    }
+    kmjPanel.appendChild(panelContent);
+
+    let whichPanelOpen = 0;
+    kmjBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (whichPanelOpen === 2)
+            viewPanel.classList.toggle('show', false);
+        
+        if (whichPanelOpen === 1) whichPanelOpen = 0;
+        else whichPanelOpen = 1;
+        kmjPanel.classList.toggle('show', whichPanelOpen === 1);
+    });
+    viewBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (whichPanelOpen === 1)
+            kmjPanel.classList.toggle('show', false);
+
+        if (whichPanelOpen === 2) whichPanelOpen = 0;
+        else whichPanelOpen = 2;
+        viewPanel.classList.toggle('show', whichPanelOpen === 2);
+    });
+
+    function insertkmj(e) {
+        const index = e.target.dataset.index;
+        const code = `&#${index};`;
+        insertText(code);
+    }
+    function insertText(text) {
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        textarea.value = textarea.value.substring(0, start) + 
+                        text + textarea.value.substring(end);
+        textarea.focus();
+        textarea.selectionStart = textarea.selectionEnd = start + text.length;
+        questChanged();
+    }
 });
