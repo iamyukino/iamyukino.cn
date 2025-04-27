@@ -13,6 +13,50 @@ function escapeHTML(text, b_kmj) {
     }) : kmjtext;
 };
 
+// Back to top
+$(() => {
+    var curPos = 0;
+    // Show or hide the sticky footer button
+    $(window).off('load.ldBk2top')
+    .on('load.ldBk2top', function(event) {
+        if($(this).scrollTop() > 600){
+            $('.back-to-top').fadeIn(200)
+            $('.back-to-hpg').fadeIn(200)
+        } else{
+            $('.back-to-hpg').fadeOut(200)
+            $('.back-to-top').fadeOut(200)
+        }
+    });
+    $(window).off('scroll.btnBk2top')
+    .on('scroll.btnBk2top', function(event) {
+        if($(this).scrollTop() > 300){
+            $('.back-to-top').fadeIn(200)
+            $('.back-to-hpg').fadeIn(200)
+        } else{
+            $('.back-to-hpg').fadeOut(200)
+            $('.back-to-top').fadeOut(200)
+        }
+    });
+    
+    // Animate the scroll to top
+    $('.back-to-top').off('click.aniBk2top')
+    .on('click.aniBk2top', function(event) {
+        event.preventDefault();
+        curPos = $(window).scrollTop();
+        $('html, body').animate({
+            scrollTop: 0,
+        }, {
+            duration: 1500,
+            easing: 'easeInOutExpo',
+            step: function(){
+                const cpos = $(window).scrollTop();
+                if (cpos <= curPos) { curPos = cpos; return ; }
+                $('html, body').stop();
+            }
+        });
+    });
+});
+
 function questChanged() {
     const text = document.getElementById('que-text').value;
     document.getElementById('cur-char-cnt').textContent = text.length;
@@ -126,8 +170,8 @@ function loadQuestions(page) {
                 const deleteBtn = ask.can_delete ? 
                 `<button class="delete-btn" data-id="${ask.id}">撤回</button>` : '';
                 const questionHtml = ` 
-                    <div class="question-wrapper">
-                        <a>
+                    <div class="question-wrapper" tabindex="0">
+                        <a class="va">
                             <div class="question">
                                 <div class="header">
                                     ${deleteBtn}
@@ -143,18 +187,18 @@ function loadQuestions(page) {
             });
             const paginationHtml = `
                 <div class="next-prev-page">
-                    <div>
+                    <div tabindex="0">
                         ${response.current_page > 1 ? 
-                            `<a onclick="loadQuestions(${response.current_page - 1})">上一页</a>` : 
-                            '<a class="disabled">到头啦</a>'}
+                            `<a class="va" onclick="loadQuestions(${response.current_page - 1})">上一页</a>` : 
+                            '<a class="va" class="disabled">到头啦</a>'}
                     </div>
                     <span class="page-indicator">
                         第 ${response.current_page} / ${response.total_pages} 页
                     </span>
-                    <div>
+                    <div tabindex="0">
                         ${response.current_page < response.total_pages ? 
-                            `<a onclick="loadQuestions(${response.current_page + 1})">下一页</a>` : 
-                            '<a class="disabled">到尾啦</a>'}
+                            `<a class="va" onclick="loadQuestions(${response.current_page + 1})">下一页</a>` : 
+                            '<a class="va" class="disabled">到尾啦</a>'}
                     </div>
                 </div>`;
             container.append(paginationHtml);
@@ -230,7 +274,7 @@ $(()=>{
     const viewPanel = document.querySelector('.view-panel');
 
     const panelContent = document.createDocumentFragment();
-    for (let i = 10; i < 34; i++) {
+    for (let i = 10; i <= 34; i++) {
         const wrapper = document.createElement('i');
         wrapper.className = 'kmj-item';
         wrapper.title = `&#${i};`;
