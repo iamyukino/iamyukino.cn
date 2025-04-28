@@ -7,13 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>猫捕り計画 | 雨宮雪乃の作業台</title>
-  <link rel="stylesheet" type="text/css" href="{% static '/wp-includes/work/game/css/background.css' %}">
-  <link rel="shortcut icon" href="{% static '/wp-content/global/images/favicon.png' %}" type="image/png">
+  <link rel="stylesheet" type="text/css" href="{% static '/as-includes/work/game/css/background.css' %}">
+  <link rel="shortcut icon" href="{% static '/as-content/global/images/favicon.png' %}" type="image/png">
 </head>
 
 <body>
-  <script src="{% static '/wp-content/work/images/game/rchat-noirc/phaser.min.js' %}"></script>
-  <script src="{% static '/wp-content/work/images/game/rchat-noirc/chat-noir.js' %}"></script>
+  <script src="{% static '/as-content/work/images/game/rchat-noirc/phaser.min.js' %}"></script>
+  <script src="{% static '/as-content/work/images/game/rchat-noirc/chat-noir.js' %}"></script>
   
   <a class="text" id="goback" onclick="back2lastdoc?back2lastdoc():history.go(-1)">&lt;返回</a>
   <a class="text" id="fullscreen">全屏显示</a>
@@ -31,7 +31,7 @@
     if (gr > 20) gr = 20;
     window.game = new CatchTheCatGame({ w: 8, h: 8, r: gr, backgroundColor: 0xF1E0E0, parent: "chat-noir", statusBarAlign: "center", credit: "iamyukino.cn" });
   </script>
-  <script src="{% static '/wp-includes/work/game/js/background.js' %}"></script>
+  <script src="{% static '/as-includes/work/game/js/background.js' %}"></script>
 
 </body>
 </html>

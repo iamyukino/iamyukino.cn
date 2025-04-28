@@ -41,6 +41,9 @@ def rec(request, block="", content=""):
 def work(request, block="", content=""):
     return from_views("work", request, block, content)
 
+def sitemap(request):
+    return render(request, "sitemap.xml", content_type="application/xml")
+
 def err404(request, exception):
     return render(request, '__epages__/404.html', status=404)
 def err500(request):

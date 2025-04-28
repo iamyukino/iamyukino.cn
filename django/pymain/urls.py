@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('api/x/', include('mod_iamyukino.urls')),
+    path('sitemap.xml', views.sitemap),
 
     re_path(r'^(?P<lang>ja-JP)?/?$', views.index),
     re_path(r'^ask(?:/(?P<block>[^/]{1,31})(?:/(?P<content>[^/]{1,31})/?)?)?/?$', views.ask ),

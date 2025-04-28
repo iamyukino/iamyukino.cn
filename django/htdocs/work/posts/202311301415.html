@@ -9,23 +9,23 @@
     <title>基于 mclib 的剪切板管理器 clipboard-master | 雨宮雪乃の作業台</title>
     <style>
         * {
-            cursor: url("{% static '/wp-content/global/images/mouse.png' %}"), auto;
+            cursor: url("{% static '/as-content/global/images/mouse.png' %}"), auto;
         }
     </style>
-    <link rel="shortcut icon" href="{% static '/wp-content/global/images/favicon.png' %}" type="image/png">
+    <link rel="shortcut icon" href="{% static '/as-content/global/images/favicon.png' %}" type="image/png">
 
-    <link rel="stylesheet" type="text/css" href="{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css' %}">
-    <script type="text/javascript" src="{% static '/wp-includes/index/js/includes/jquery.min.js' %}"></script>
-    <script src="{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/as-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css' %}">
+    <script type="text/javascript" src="{% static '/as-includes/index/js/includes/jquery.min.js' %}"></script>
+    <script src="{% static '/as-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js' %}"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static '/wp-includes/work/css/logo.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/wp-includes/work/fonts/logo/logo.css' %}">
-    <link rel="stylesheet" id="saukra_css-css" href="{% static '/wp-includes/work/css/style.css' %}" type="text/css" media="all">
-    <link rel="stylesheet" href="{% static '/wp-includes/work/css/lib.min.css' %}" type="text/css" media="all">
-    <link rel="stylesheet" href="{% static '/wp-includes/work/css/font.css' %}" type="text/css" media="all">
-    <link rel="stylesheet" href="{% static '/wp-includes/work/css/insight.css' %}" type="text/css" media="all">
-    <link rel="stylesheet" href="{% static '/wp-includes/work/css/jquery.fancybox.min.css' %}" type="text/css" media="all">
-    <link rel="stylesheet" href="{% static '/wp-includes/work/css/zoom.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="{% static '/as-includes/work/css/logo.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/as-includes/work/fonts/logo/logo.css' %}">
+    <link rel="stylesheet" id="saukra_css-css" href="{% static '/as-includes/work/css/style.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static '/as-includes/work/css/lib.min.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static '/as-includes/work/css/font.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static '/as-includes/work/css/insight.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static '/as-includes/work/css/jquery.fancybox.min.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static '/as-includes/work/css/zoom.css' %}" type="text/css" media="all">
     <style>
         .emoji-coda {
             display: inline-block!important;
@@ -37,30 +37,30 @@
         }
     </style>
 
-    <link rel="stylesheet" type="text/css" href="{% static '/wp-includes/work/css/sharejs.css' %}">
-    <script type="text/javascript" src="{% static '/wp-includes/work/js/Valine.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/as-includes/work/css/sharejs.css' %}">
+    <script type="text/javascript" src="{% static '/as-includes/work/js/Valine.min.js' %}"></script>
 
     <script>
         var mashiro_option = new Object
             , mashiro_global = new Object
             , bg = [
-                "{% static '/wp-content/work/images/cover/0.webp' %}",
-                "{% static '/wp-content/work/images/cover/1.webp' %}",
-                "{% static '/wp-content/work/images/cover/2.webp' %}",
-                "{% static '/wp-content/work/images/cover/3.webp' %}",
-                "{% static '/wp-content/work/images/cover/4.webp' %}",
-                "{% static '/wp-content/work/images/cover/5.webp' %}",
-                "{% static '/wp-content/work/images/cover/6.webp' %}",
-                "{% static '/wp-content/work/images/cover/7.webp' %}",
-                "{% static '/wp-content/work/images/cover/8.webp' %}",
-                "{% static '/wp-content/work/images/cover/9.webp' %}",
-                "{% static '/wp-content/work/images/cover/10.webp' %}",
-                "{% static '/wp-content/work/images/cover/11.webp' %}",
-                "{% static '/wp-content/work/images/cover/12.webp' %}",
-                "{% static '/wp-content/work/images/cover/13.webp' %}",
-                "{% static '/wp-content/work/images/cover/14.webp' %}",
-                "{% static '/wp-content/work/images/cover/15.webp' %}",
-                "{% static '/wp-content/work/images/cover/16.webp' %}"
+                "{% static '/as-content/work/images/cover/0.webp' %}",
+                "{% static '/as-content/work/images/cover/1.webp' %}",
+                "{% static '/as-content/work/images/cover/2.webp' %}",
+                "{% static '/as-content/work/images/cover/3.webp' %}",
+                "{% static '/as-content/work/images/cover/4.webp' %}",
+                "{% static '/as-content/work/images/cover/5.webp' %}",
+                "{% static '/as-content/work/images/cover/6.webp' %}",
+                "{% static '/as-content/work/images/cover/7.webp' %}",
+                "{% static '/as-content/work/images/cover/8.webp' %}",
+                "{% static '/as-content/work/images/cover/9.webp' %}",
+                "{% static '/as-content/work/images/cover/10.webp' %}",
+                "{% static '/as-content/work/images/cover/11.webp' %}",
+                "{% static '/as-content/work/images/cover/12.webp' %}",
+                "{% static '/as-content/work/images/cover/13.webp' %}",
+                "{% static '/as-content/work/images/cover/14.webp' %}",
+                "{% static '/as-content/work/images/cover/15.webp' %}",
+                "{% static '/as-content/work/images/cover/16.webp' %}"
             ], bgindex = Math.floor(Math.random() * bg.length);
 
             mashiro_option.NProgressON = !0,
@@ -340,17 +340,17 @@
                     </div>
                 </div>
             </header>
-            <link rel="stylesheet" type="text/css" href="{% static '/wp-includes/work/css/sharejs.css' %}">
-            <link rel="stylesheet" href="{% static '/wp-includes/work/css/tocbot.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static '/as-includes/work/css/sharejs.css' %}">
+            <link rel="stylesheet" href="{% static '/as-includes/work/css/tocbot.css' %}">
             <div class="pattern-center-blank"></div>
             <div class="pattern-center single-center">
-                <div class="pattern-attachment-img lazyload" style="background-image:url(/statics/wp-content/work/images/post/202311301415.webp)" src="{% static '/wp-content/work/images/global/lazyload1.webp' %}" data-src="{% static '/wp-content/work/images/post/202311301415.webp' %}"></div>
+                <div class="pattern-attachment-img lazyload" style="background-image:url(/statics/as-content/work/images/post/202311301415.webp)" src="{% static '/as-content/work/images/global/lazyload1.webp' %}" data-src="{% static '/as-content/work/images/post/202311301415.webp' %}"></div>
                 <header class="pattern-header single-header" style="text-shadow:0 0 7px #000,0 0 7px #000">
                     <h1 class="entry-title">基于 mclib 的剪切板管理器 clipboard-master</h1>
                     <p class="entry-census">
                         <span>
                             <a href="https://github.com/iamyukino" target="_blank">
-                                <img src="{% static '/wp-content/work/images/global/avatar.png' %}">
+                                <img src="{% static '/as-content/work/images/global/avatar.png' %}">
                             </a>
                         </span>
                         <span>
@@ -381,7 +381,7 @@
                             <div class="toc"></div>
                             <div class="entry-content">
                                 <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>这是一个复刻了小艺输入法剪切板功能的简易剪切板管理系统，解决了在 Win11 中难以查看剪切板历史记录的问题。项目围绕 C语言大作业 要求的 “增、删、改、查” 四个功能展开，依次实现。<br>编译环境：MSVC/GCC + <a href="https://github.com/iamyukino/mclib" target="_blank" rel="noopener">mclib</a> + Win2000 + C++11</p>
-                      <h2 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h2><p><strong>运行截图</strong><br><img src="{% static '/wp-content/work/images/post/r202311301415c/2806786-20231130141524480-1358152933.jpg' %}" alt="image"><br><strong>使用方法</strong><br>用户 (通过右键或快捷键等方式) 复制的内容将自动记录到程序中。用户可以通过将光标移动指定位置，并单击需要粘贴的内容，来完成粘贴。每条剪切板记录右侧两个按钮 “Mod” “X” 提供修改和删除功能。通过单击顶部标题栏下方两个按钮 “搜索” “清空” 使用查询和清空功能。<br><strong>实现细节</strong><br>在数据结构上，项目选择了内存管理优化过的链式循环队列。在查询方面，一开始选择了关键词提取匹配算法，但由于较为复杂编写难度大，改为使用最长公共子串模板。在 GUI 方面，使用了自己独立开发的图形库 <a href="https://github.com/iamyukino/mclib" target="_blank" rel="noopener">mclib</a>，由于是自己造的轮子，对实现细节较为熟悉，遇到问题能够快速定位解决。</p>
+                      <h2 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h2><p><strong>运行截图</strong><br><img src="{% static '/as-content/work/images/post/r202311301415c/2806786-20231130141524480-1358152933.jpg' %}" alt="image"><br><strong>使用方法</strong><br>用户 (通过右键或快捷键等方式) 复制的内容将自动记录到程序中。用户可以通过将光标移动指定位置，并单击需要粘贴的内容，来完成粘贴。每条剪切板记录右侧两个按钮 “Mod” “X” 提供修改和删除功能。通过单击顶部标题栏下方两个按钮 “搜索” “清空” 使用查询和清空功能。<br><strong>实现细节</strong><br>在数据结构上，项目选择了内存管理优化过的链式循环队列。在查询方面，一开始选择了关键词提取匹配算法，但由于较为复杂编写难度大，改为使用最长公共子串模板。在 GUI 方面，使用了自己独立开发的图形库 <a href="https://github.com/iamyukino/mclib" target="_blank" rel="noopener">mclib</a>，由于是自己造的轮子，对实现细节较为熟悉，遇到问题能够快速定位解决。</p>
                       <h2 id="完善和优化"><a href="#完善和优化" class="headerlink" title="完善和优化"></a>完善和优化</h2><p>此选题目的和初衷是为了更方便地进行复制和粘贴。<br>程序使用 Github 进行版本控制，并邀请了几位同学参与测试，提出了一些建议，例举部分如下：</p>
                       <ol>
                       <li>原本软件的粘贴功能通过更新剪切板实现，但部分网址（例如：头歌等）禁止使用复制和粘贴功能。<br>解决方案：通过改用 SendInput 模拟发送按键。</li>
@@ -419,7 +419,7 @@
                             <div class="post-nepre full previous">
                                 <a href="./202204011546.html" rel="prev">
                                     <div class="background">
-                                        <img class="lazyload" src="{% static '/wp-content/work/images/global/lazyload1.webp' %}" data-src="{% static '/wp-content/work/images/post/202204011546.webp' %}" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="{% static '/wp-content/work/images/post/202204011546.webp' %}">
+                                        <img class="lazyload" src="{% static '/as-content/work/images/global/lazyload1.webp' %}" data-src="{% static '/as-content/work/images/post/202204011546.webp' %}" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="{% static '/as-content/work/images/post/202204011546.webp' %}">
                                     </div>
                                     <span class="label">Previous Post</span>
                                     <div class="info">
@@ -430,7 +430,7 @@
                             </div>
                         </section>
                         <div id="vcomments"></div>
-                        <script data-cfasync="false" src="{% static '/wp-includes/work/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+                        <script data-cfasync="false" src="{% static '/as-includes/work/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
                         <script>
                             window.onload = function() {
                                 (new Valine).init({
@@ -450,7 +450,7 @@
                         <section class="author-profile">
                             <div class="info" itemprop="author" itemscope itemtype="https://schema.org/Person">
                                 <a href="https://github.com/iamyukino" target="_blank" class="profile gravatar">
-                                    <img src="{% static '/wp-content/work/images/global/avatar.png' %}" target="_blank" itemprop="image" alt="雨宮雪乃" height="70" width="70">
+                                    <img src="{% static '/as-content/work/images/global/avatar.png' %}" target="_blank" itemprop="image" alt="雨宮雪乃" height="70" width="70">
                                 </a>
                                 <div class="meta">
                                     <span class="title">Author</span>
@@ -491,14 +491,14 @@
                     TAGS: "标签"
                 },
                 ROOT_URL: "/",
-                CONTENT_URL: "{% static '/wp-content/work/content.json' %}"
+                CONTENT_URL: "{% static '/as-content/work/content.json' %}"
             }
         </script>
         <footer id="colophon" class="site-footer" role="contentinfo">
             <div class="site-info">
                 <div class="footertext">
                     <div class="img-preload">
-                        <img src="{% static '/wp-content/work/images/global/loading-p.gif' %}">
+                        <img src="{% static '/as-content/work/images/global/loading-p.gif' %}">
                     </div>
                     <p style="color:#666">&copy 2025 iamyukino.cn</p>
                 </div>
@@ -513,19 +513,19 @@
                 </div>
             </div>
         </footer>
-        <script type="text/javascript" src="{% static '/wp-includes/work/js/lib.min.js' %}"></script>
-        <script src="{% static '/wp-includes/work/js/clipboard.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/wp-includes/work/js/InsightSearch.js' %}"></script>
-        <script type="text/javascript" src="{% static '/wp-includes/work/js/jquery.fancybox.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/wp-includes/work/js/zoom.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/wp-includes/work/js/sakura-app.js' %}"></script>
-        <script type="text/javascript" src="{% static '/wp-includes/work/js/tocbot.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/as-includes/work/js/lib.min.js' %}"></script>
+        <script src="{% static '/as-includes/work/js/clipboard.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/as-includes/work/js/InsightSearch.js' %}"></script>
+        <script type="text/javascript" src="{% static '/as-includes/work/js/jquery.fancybox.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/as-includes/work/js/zoom.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/as-includes/work/js/sakura-app.js' %}"></script>
+        <script type="text/javascript" src="{% static '/as-includes/work/js/tocbot.min.js' %}"></script>
         <script type="text/javascript">
             var Poi;
             Poi = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? {
                 pjax: "1",
                 movies: {
-                    url: "{% static '/wp-content/work/images/cover' %}",
+                    url: "{% static '/as-content/work/images/cover' %}",
                     name: "miao3.mp4",
                     live: "close"
                 },
@@ -537,7 +537,7 @@
             } : {
                 pjax: "1",
                 movies: {
-                    url: "{% static '/wp-content/work/images/cover' %}",
+                    url: "{% static '/as-content/work/images/cover' %}",
                     name: "miao3.mp4",
                     live: "open"
                 },
@@ -586,18 +586,18 @@
 
     <div id="mo-nav">
         <div class="m-avatar">
-            <img src="{% static '/wp-content/work/images/global/avatar.png' %}">
+            <img src="{% static '/as-content/work/images/global/avatar.png' %}">
         </div>
         <p style="text-align:center;color:#333;font-weight:900;font-family:Ubuntu,sans-serif;letter-spacing:1.5px">雨宮雪乃の作業台</p>
         <p style="text-align:center;word-spacing:15px">
             <a href="https://github.com/iamyukino" target="_blank">
-                <img src="{% static '/wp-content/work/images/main/github.png' %}" style="width:10%;">
+                <img src="{% static '/as-content/work/images/main/github.png' %}" style="width:10%;">
             </a>
             <a href="https://gitee.com/iamyukino" target="_blank">
-                <img src="{% static '/wp-content/work/images/main/gitee.png' %}" style="width:10%;">
+                <img src="{% static '/as-content/work/images/main/gitee.png' %}" style="width:10%;">
             </a>
             <a href="https://space.bilibili.com/523834694" target="_blank">
-                <img src="{% static '/wp-content/work/images/main/bilibili.png' %}" style="width:10%;">
+                <img src="{% static '/as-content/work/images/main/bilibili.png' %}" style="width:10%;">
             </a>
         </p>
         <ul id="menu-new-1" class="menu">
@@ -680,9 +680,9 @@
     <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display:none">
         <i class="fa fa-chevron-up" aria-hidden="true"></i>
     </button>
-    <link rel="stylesheet" href="{% static '/wp-includes/global/js/aplayer/APlayer.min.css' %}">
-    <script src="{% static '/wp-includes/global/js/aplayer/APlayer.min.js' %}"></script>
-    <script src="{% static '/wp-includes/global/js/aplayer/Meting.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/as-includes/global/js/aplayer/APlayer.min.css' %}">
+    <script src="{% static '/as-includes/global/js/aplayer/APlayer.min.js' %}"></script>
+    <script src="{% static '/as-includes/global/js/aplayer/Meting.min.js' %}"></script>
     <style>
         .aplayer .aplayer-lrc {
             height: 35px
@@ -724,9 +724,9 @@
         })
     </script>
     <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas>
-    <script type="text/javascript" src="{% static '/wp-includes/work/js/anime.min.js' %}" async></script>
-    <script type="text/javascript" src="{% static '/wp-includes/work/js/mouse-click-n-tag.js' %}" async></script>
-    <script src="{% static '/wp-includes/work/js/fly-engine.js' %}" type="module" async></script>
+    <script type="text/javascript" src="{% static '/as-includes/work/js/anime.min.js' %}" async></script>
+    <script type="text/javascript" src="{% static '/as-includes/work/js/mouse-click-n-tag.js' %}" async></script>
+    <script src="{% static '/as-includes/work/js/fly-engine.js' %}" type="module" async></script>
     
     <!-- live2d -->
     <div class="waifu" style="z-index:9;">
@@ -743,14 +743,14 @@
         </div>
     </div>
     <!-- Live2DCubismCore script -->
-    <script src="{% static '/wp-includes/global/waifu/Core/live2dcubismcore.js' %}"></script>
+    <script src="{% static '/as-includes/global/waifu/Core/live2dcubismcore.js' %}"></script>
     <!-- Build script -->
-    <script src = "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js' %}"></script>
-    <script src="{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js' %}"></script>
+    <script src = "{% static '/as-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js' %}"></script>
+    <script src="{% static '/as-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js' %}"></script>
     <script type="text/javascript">    
-        let modulesPath = "{% static '/wp-content/global/waifu/' %}"
+        let modulesPath = "{% static '/as-content/global/waifu/' %}"
         let modelNames = ['TaoHua', 'mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
-        let waifuTipsUrl = "{% static '/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json' %}"
+        let waifuTipsUrl = "{% static '/as-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json' %}"
         initModel(modulesPath, modelNames, waifuTipsUrl);
     </script>
 
