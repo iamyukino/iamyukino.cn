@@ -1,0 +1,21 @@
+{
+  "name": "iamYukino - 棉花糖",
+  "short_name": "棉花糖",
+  "icons": [
+    {
+      "src": "https://iamyukino.cn/statics/as-content/ask/images/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://iamyukino.cn/statics/as-content/ask/images/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffb5b5",
+  "display": "standalone"
+}

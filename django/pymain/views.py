@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect
 from urllib.parse import urlencode
 from django.http import Http404
-from mod_iamyukino.tests import Test
-
+# from mod_iamyukino.tests import Test
+from .sitemap import get_mod_time, assitemap
 
 def index(request, lang="index"):
     if (request.path.endswith("ja-JP/")):
         pstr = request.path
         return redirect(pstr.rstrip("/"))
     la = ("ja-JP" if lang == "ja-JP" else "zh-CN")
+    template_path = "index.html"
     try:
-        return render(request, "index.html", {"la":la})
+        return render(request, template_path, {"la":la,"t_mod":get_mod_time(template_path)})
     except:
         raise Http404("views.index: page not found")
 
@@ -29,7 +30,7 @@ def from_views(ori, request, block, content):
     else:
         template_path = f"{ori}/{block}/index.html"
     try:
-        return render(request, template_path)
+        return render(request, template_path, {"t_mod":get_mod_time(template_path)})
     except:
         raise Http404(f"views.{ori}: page not found")
 
@@ -42,7 +43,7 @@ def work(request, block="", content=""):
     return from_views("work", request, block, content)
 
 def sitemap(request):
-    return render(request, "sitemap.xml", content_type="application/xml")
+    return render(request, "sitemap.xml", {"mp":assitemap}, content_type="application/xml")
 
 def err404(request, exception):
     return render(request, '__epages__/404.html', status=404)

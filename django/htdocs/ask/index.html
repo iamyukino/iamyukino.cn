@@ -3,27 +3,28 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <meta name="description" content="转呀转～把想和雨雪说的话卷进亮晶晶的糖丝里，蓬松松软的文字团会咕噜噜吐出甜甜答案！">
-    <meta name="keywords" content="雨雪,雨雪冰屋,雨宫雪乃,雨雪的棉花糖">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="雨雪,雨雪冰屋,棉花糖,雨宫雪乃,雨雪的棉花糖,留言板,问答">
+
     <title>雨雪的棉花糖</title>
-    <link rel="shortcut icon" type="image/x-icon" href="https://iamyukino.cn/statics/as-content/ask/images/favicon.ico">
-    <link rel="icon" sizes="any" mask="" href="https://iamyukino.cn/statics/as-content/ask/images/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" href="https://iamyukino.cn/statics/as-content/ask/images/favicon-256x256.png">
-    <link rel="sitemap" type="application/xml" href="https://iamyukino.cn/sitemap.xml">
+    <meta name="apple-mobile-web-app-title" content="雨雪的棉花糖">
+    <link rel="icon" type="image/png" href="https://iamyukino.cn/statics/as-content/ask/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="https://iamyukino.cn/statics/as-content/ask/images/favicon.svg">
+    <link rel="shortcut icon" href="https://iamyukino.cn/statics/as-content/ask/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://iamyukino.cn/statics/as-content/ask/images/apple-touch-icon.png">
+    <link rel="manifest" href="https://iamyukino.cn/statics/as-content/ask/images/site.webmanifest">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://iamyukino.cn/ask">
     <meta property="og:site_name" content="雨雪冰屋">
     <meta property="og:title" content="雨雪的棉花糖">
-    <meta property="og:updated_time" content="2025-04-28T15:15:20+08:00">
+    <meta property="og:updated_time" content="{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}">
     <meta property="og:description" content="转呀转～把想和雨雪说的话卷进亮晶晶的糖丝里，蓬松松软的文字团会咕噜噜吐出甜甜答案！">
     <meta property="og:image" content="https://iamyukino.cn/statics/as-content/ask/images/favicon-256x256.png">
     <meta property="og:image:alt" content="雨雪搪塞">
-        
+    
     <link rel="stylesheet" href="{% static '/as-includes/ask/css/ask-style.css' %}">
     <script src="{% static '/as-includes/index/js/includes/jquery.min.js' %}"></script>
 </head>
@@ -32,12 +33,13 @@
 <div class="viewbox">
     <div itemscope itemtype="http://schema.org/WebPage" style="display:none;">
         <time itemprop="dateModified" class="date" id="updatetime"
-        datetime="2025-04-28T15:15:20+08:00">2025.04.28 15:15</time>
+        datetime="{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}">{{t_mod|date:"Y.m.d H:i"}}</time>
     </div>
     <section class="index" style="max-width:500px;">
+        <h1 style="display:none;">雨雪的棉花糖</h1>
         <div class="profile">
             <a class="va" href="/"><div class="header">
-                <img src="{% static '/as-content/index/images/favicon-432x432.png' %}" alt="搪塞雨雪">
+                <img class="lazy" src="{% static '/as-content/ask/images/avatar/avatar.webp' %}" data-src="{% static '/as-content/index/images/web-app-manifest-512x512.png' %}" alt="搪塞雨雪" width="100" height="100">
             </div></a>
             <a class="va" href="/"><div class="content"><p>雨雪ちゃん</p></div></a>
         </div>
@@ -68,10 +70,10 @@
     <footer>
         <div><p><a class="va" href="/">©2025</a>&nbsp;<a class="va" href="/">iamyukino.cn</a></p></div>
     </footer>
-    <a href="/"><button class="back-to-hpg">
+    <a href="/"><button class="back-to-hpg" title="back-to-homepage">
         <span>雨雪<br>冰屋</span>
     </button></a>
-    <button class="back-to-top">
+    <button class="back-to-top" title="back-to-top">
         <svg class="chevron-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path d="M241 130.5l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9l-22.7 22.7c-9.4 9.4-24.5 9.4-33.9 0L224 227.5 69.3 381.5c-9.4 9.3-24.5 9.3-33.9 0l-22.7-22.7c-9.4-9.4-9.4-24.6 0-33.9L207 130.5c9.4-9.4 24.6-9.4 33.9 0z"/>
         </svg>
@@ -79,6 +81,7 @@
     {% csrf_token %}
     <script> var m_csrf_token = '{{ csrf_token }}'; </script>
     <script src="{% static '/as-includes/index/js/includes/jquery.easing.min.js' %}"></script>
+    <script src="{% static '/as-includes/global/js/lazyload.js' %}"></script>
     <script src="{% static '/as-includes/ask/js/ask-index.js' %}"></script>
 </div>
 

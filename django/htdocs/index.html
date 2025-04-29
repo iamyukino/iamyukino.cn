@@ -3,32 +3,33 @@
 <html lang="{{la}}">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <meta name="description" content="「一隅雨雪一炉窝,可能会融化持久堆?」雨雪冰屋是雨宫雪乃的个人网站, 其中包括棉花糖(问答)、资源站(图床)、工作台(博客)及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台。">
-    <meta name="keywords" content="{% if la == "zh-CN" %}雨雪,雨雪冰屋,雨宫雪乃,个人博客,个人网站{% else %}雨雪,雨雪の氷室,雨宮雪乃,個人ブログ,個人サイト{% endif %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="{% if la == "zh-CN" %}雨雪,雨雪冰屋,雨雪个人网站,雨宫雪乃,雨雪是谁,雨雪简介,个人网站{% else %}雨雪,雨雪の氷室,雨雪個人サイト,雨宮雪乃,雨雪とは,雨雪プロフィール,個人サイト{% endif %}">
+
     <title>{% if la == "zh-CN" %}一隅雨雪一炉窝 | 雨雪冰屋{% else %}片隅の雨雪、小さな炉端 | 雨雪の氷室{% endif %}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="https://iamyukino.cn/statics/as-content/index/images/favicon.ico">
-    <link rel="icon" sizes="any" mask="" href="https://iamyukino.cn/statics/as-content/index/images/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" href="https://iamyukino.cn/statics/as-content/index/images/favicon-432x432.png">
-    <link rel="sitemap" type="application/xml" href="https://iamyukino.cn/sitemap.xml">
+    <meta name="apple-mobile-web-app-title" content="{% if la == "zh-CN" %}雨雪冰屋{% else %}雨雪の氷室{% endif %}">
+    <link rel="icon" type="image/png" href="/statics/as-content/index/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/statics/as-content/index/images/favicon.svg">
+    <link rel="shortcut icon" href="https://iamyukino.cn/statics/as-content/index/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://iamyukino.cn/statics/as-content/index/images/apple-touch-icon.png">
+    <link rel="manifest" href="https://iamyukino.cn/statics/as-content/index/images/{% if la == "zh-CN" %}site.webmanifest{% else %}site-ja.webmanifest{% endif %}">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://iamyukino.cn/">
     <meta property="og:site_name" content="{% if la == "zh-CN" %}雨雪冰屋{% else %}雨雪の氷室{% endif %}">
     <meta property="og:title" content="{% if la == "zh-CN" %}一隅雨雪一炉窝 | 雨雪冰屋{% else %}片隅の雨雪、小さな炉端 | 雨雪の氷室{% endif %}">
-    <meta property="og:updated_time" content="{% if la == "zh-CN" %}2025-04-28T20:47:20+08:00{% else %}2025-04-28T21:47:20+09:00{% endif %}">
+    <meta property="og:updated_time" content="{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}">
     <meta property="og:description" content="「一隅雨雪一炉窝,可能会融化持久堆?」雨雪冰屋是雨宫雪乃的个人网站, 其中包括棉花糖(问答)、资源站(图床)、工作台(博客)及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台。">
     <meta property="og:image" content="https://iamyukino.cn/statics/as-content/index/images/favicon-432x432.png">
     <meta property="og:image:alt" content="雨雪搪塞">
     
     <meta property="og:locale" content="{% if la == "zh-CN" %}zh_CN{% else %}ja_JP{% endif %}">
     <meta property="og:locale:alternate" content="{% if la == "zh-CN" %}ja_JP{% else %}zh_CN{% endif %}">
-    <link rel="alternate" hreflang="x-default" href="https://iamyukino.cn/">
     <link rel="alternate" hreflang="zh" href="https://iamyukino.cn/">
     <link rel="alternate" hreflang="ja" href="https://iamyukino.cn/ja-JP">
+    <link rel="alternate" hreflang="x-default" href="https://iamyukino.cn/">
     
     <script src="{% static '/as-includes/index/js/includes/jquery.min.js' %}"></script>
     <style>.head-loading{position:fixed;top:0;left:0;display:table;height:100%;width:100%;background:#f5f5f5;z-index:999999}@media only screen and (min-width:768px) and (max-width:3840px){.head-loading .hl-square{position:fixed;top:calc(50% - 50px);left:calc(50% - 50px);z-index:999}}@media (max-width:767px){.head-loading .hl-square{position:fixed;top:calc(50% - 50px);left:calc(50% - 50px);z-index:999}}.hl-square{position:relative;width:100px;height:100px;background-color:#f5f5f5;overflow:hidden}@keyframes scale{0%{transform:scale(0)}100%{transform:scale(1)}}.hl-square>svg{position:absolute;display:block;width:100%;height:150%;animation:forwards pop-up 0.8s!important;transform:translateY(100%);animation-delay:0.8s!important}@keyframes pop-up{0%{transform:translateY(100%) scale(1)}50%{transform:translateY(-5%) scale(1,1.1)}60%{transform:translateY(5%) scale(1.1,0.9)}100%{transform:translateY(0) scale(1)}}.hl-element{position:absolute!important;background-color:#4f8bae!important}.hl-one{animation:linear forwards element-animation-one 1.5s!important;height:50px;animation-delay:0.4s!important}.hl-two{animation:linear forwards element-animation-two 1.5s!important;width:50px;left:50px;animation-delay:0.6s!important}.hl-three{animation:linear forwards element-animation-three 1.5s!important;height:50px;top:50px;animation-delay:0.8s!important}@keyframes element-animation-one{0%{width:0;left:0}5%{width:100px;left:0}95%{width:100px;left:0}100%{width:0;left:100px}}@keyframes element-animation-two{0%{height:0;top:0}5%{height:100px;top:0}95%{height:100px;top:0}100%{height:0;top:100px}}@keyframes element-animation-three{0%{width:0;right:0}5%{width:100px;right:0}95%{width:100px;right:0}100%{width:0;right:100px}}</style>
@@ -50,9 +51,8 @@
     
 <div class="viewbox">
     <div itemscope itemtype="http://schema.org/WebPage" style="display:none;">
-        <h1 class="site_name">雨雪冰屋</h1>
         <time itemprop="dateModified" class="date" id="updatetime"
-        datetime="2025-04-28T20:47:20+08:00">2025.04.28 20:47</time>
+        datetime="{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}">{{t_mod|date:"Y.m.d H:i"}}</time>
     </div>
 <div class="scrollbox">
     <style> .container { margin-left: 30px; margin-top: 20px; } </style>
@@ -74,6 +74,7 @@
     <script src="{% static '/as-includes/index/js/includes/swiper.min.js' %}" charset="utf-8"></script>
     <script src="{% static '/as-includes/index/js/includes/vue.min.js' %}"></script>
     <script src="{% static '/as-includes/index/js/includes/jq22.js' %}"></script>
+    <script src="{% static '/as-includes/global/js/lazyload.js' %}"></script>
     <script src="{% static '/as-includes/index/js/myapp/index.js' %}"></script>
 
     <header id="home" class="header-area">
