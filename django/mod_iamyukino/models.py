@@ -5,7 +5,7 @@ import json
 class Ask(models.Model):
     nickname = models.CharField(max_length=32, null=False, blank=False)
     authorip = models.CharField(max_length=16, null=False, blank=False, default="0.0.0.0")
-    autagent = models.CharField(max_length=64, null=False, blank=False, default="unknown")
+    autagent = models.CharField(max_length=256, null=False, blank=False, default="unknown")
     que_time = models.DateTimeField(default=timezone.now)
     que_text = models.TextField(null=False, blank=False)
     ans_time = models.DateTimeField(null=True, blank=True)

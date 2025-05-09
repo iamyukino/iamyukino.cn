@@ -5,6 +5,6 @@
     <lastmod>{{it.lastmod|date:"Y-m-d\TH:i:s+08:00"}}</lastmod>
     <changefreq>{{it.changefreq}}</changefreq>
     <priority>{{it.priority}}</priority>{% for jt in it.alternate %}
-    <link rel="alternate" hreflang="{{jt.hreflang}}" href="{{jt.href}}"/>{% endfor %}
+    <xhtml:link rel="alternate" hreflang="{{jt.hreflang}}" href="{{jt.href}}"/>{% endfor %}
   </url>{% endfor %}
 </urlset>

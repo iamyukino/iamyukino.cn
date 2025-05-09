@@ -50,7 +50,7 @@ def submit_ask(request):
         if len(m_nickname) == 0: m_nickname = '?null'
         if len(m_que_text) == 0: m_que_text = '?null'
         m_authorip = get_client_ip(request)
-        m_autagent = (request.META.get('HTTP_USER_AGENT', ''))[:64]
+        m_autagent = (request.META.get('HTTP_USER_AGENT', ''))[:256]
     except Exception as e:
         return JsonResponse({'status': 'error',
             'message': 'POST request missing parameters.'}, status=400)

@@ -7,32 +7,59 @@
     <meta name="description" content="「一隅雨雪一炉窝,可能会融化持久堆?」雨雪冰屋是雨宫雪乃的个人网站, 其中包括棉花糖(问答)、资源站(图床)、工作台(博客)及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台。">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="{% if la == "zh-CN" %}雨雪,雨雪冰屋,雨雪个人网站,雨宫雪乃,雨雪是谁,雨雪简介,个人网站{% else %}雨雪,雨雪の氷室,雨雪個人サイト,雨宮雪乃,雨雪とは,雨雪プロフィール,個人サイト{% endif %}">
-
+    <meta name="application-name" content="{% if la == "zh-CN" %}雨雪冰屋{% else %}雨雪の氷室{% endif %}">
+    <!-- favicon -->
     <title>{% if la == "zh-CN" %}一隅雨雪一炉窝 | 雨雪冰屋{% else %}片隅の雨雪、小さな炉端 | 雨雪の氷室{% endif %}</title>
     <meta name="apple-mobile-web-app-title" content="{% if la == "zh-CN" %}雨雪冰屋{% else %}雨雪の氷室{% endif %}">
-    <link rel="icon" type="image/png" href="/statics/as-content/index/images/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="/statics/as-content/index/images/favicon.svg">
+    <link rel="icon" type="image/png" href="https://iamyukino.cn/statics/as-content/index/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="https://iamyukino.cn/statics/as-content/index/images/favicon.svg">
     <link rel="shortcut icon" href="https://iamyukino.cn/statics/as-content/index/images/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="https://iamyukino.cn/statics/as-content/index/images/apple-touch-icon.png">
     <link rel="manifest" href="https://iamyukino.cn/statics/as-content/index/images/{% if la == "zh-CN" %}site.webmanifest{% else %}site-ja.webmanifest{% endif %}">
-
+    <!-- jsonld -->
+    <script type="application/ld+json">{
+        "@context":"https://schema.org",
+        "@type":"WebSite",
+        "name":"雨雪冰屋",
+        "alternateName":["iamyukino","雨雪の氷室"],
+        "url":"https://iamyukino.cn/",
+        "image":"https://iamyukino.cn/statics/as-content/index/images/og-banner.jpg",
+        "dateCreated":"2025-02-22T23:59:59+08:00",
+        "dateModified":"{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}",
+        "author":{
+            "@type":"Person",
+            "name":"雨宫雪乃",
+            "alternateName":["雨宮雪乃","雨雪","iamyukino"]
+        }
+    }</script>
+    <!-- twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://iamyukino.cn/{% if la == "zh-CN" %}{% else %}ja-JP{% endif %}">
+    <meta name="twitter:site" content="@immyukino">
+    <meta name="twitter:creator" content="@immyukino">
+    <meta name="twitter:title" content="{% if la == "zh-CN" %}一隅雨雪一炉窝 | 雨雪冰屋{% else %}片隅の雨雪、小さな炉端 | 雨雪の氷室{% endif %}">
+    <meta name="twitter:description" content="「一隅雨雪一炉窝,可能会融化持久堆?」雨雪冰屋是雨宫雪乃的个人网站, 其中包括棉花糖(问答)、资源站(图床)、工作台(博客)及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台。">
+    <meta name="twitter:image" content="https://iamyukino.cn/statics/as-content/index/images/og-banner.jpg">
+    <meta name="twitter:image:alt" content="{% if la == "zh-CN" %}扑进雪堆抖抖抖、尾巴甩出小冰星☆！{% else %}RUA！雪だぁ～ダイブでぶるん☆{% endif %}">
+    <!-- opengraph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://iamyukino.cn/">
+    <meta property="og:url" content="https://iamyukino.cn/{% if la == "zh-CN" %}{% else %}ja-JP{% endif %}">
     <meta property="og:site_name" content="{% if la == "zh-CN" %}雨雪冰屋{% else %}雨雪の氷室{% endif %}">
     <meta property="og:title" content="{% if la == "zh-CN" %}一隅雨雪一炉窝 | 雨雪冰屋{% else %}片隅の雨雪、小さな炉端 | 雨雪の氷室{% endif %}">
+    <meta property="og:release_date" content="{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}">
     <meta property="og:updated_time" content="{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}">
     <meta property="og:description" content="「一隅雨雪一炉窝,可能会融化持久堆?」雨雪冰屋是雨宫雪乃的个人网站, 其中包括棉花糖(问答)、资源站(图床)、工作台(博客)及雨雪API等版块, 不定时更新, 是iamYukino分享兴趣爱好和对外展示的平台。">
-    <meta property="og:image" content="https://iamyukino.cn/statics/as-content/index/images/favicon-432x432.png">
-    <meta property="og:image:alt" content="雨雪搪塞">
-    
+    <meta property="og:image" content="https://iamyukino.cn/statics/as-content/index/images/og-banner.jpg">
+    <meta property="og:image:alt" content="{% if la == "zh-CN" %}扑进雪堆抖抖抖、尾巴甩出小冰星☆！{% else %}RUA！雪だぁ～ダイブでぶるん☆{% endif %}">
     <meta property="og:locale" content="{% if la == "zh-CN" %}zh_CN{% else %}ja_JP{% endif %}">
     <meta property="og:locale:alternate" content="{% if la == "zh-CN" %}ja_JP{% else %}zh_CN{% endif %}">
+    <!-- hreflang -->
     <link rel="alternate" hreflang="zh" href="https://iamyukino.cn/">
     <link rel="alternate" hreflang="ja" href="https://iamyukino.cn/ja-JP">
     <link rel="alternate" hreflang="x-default" href="https://iamyukino.cn/">
-    
-    <script src="{% static '/as-includes/index/js/includes/jquery.min.js' %}"></script>
+    <!-- default -->
     <style>.head-loading{position:fixed;top:0;left:0;display:table;height:100%;width:100%;background:#f5f5f5;z-index:999999}@media only screen and (min-width:768px) and (max-width:3840px){.head-loading .hl-square{position:fixed;top:calc(50% - 50px);left:calc(50% - 50px);z-index:999}}@media (max-width:767px){.head-loading .hl-square{position:fixed;top:calc(50% - 50px);left:calc(50% - 50px);z-index:999}}.hl-square{position:relative;width:100px;height:100px;background-color:#f5f5f5;overflow:hidden}@keyframes scale{0%{transform:scale(0)}100%{transform:scale(1)}}.hl-square>svg{position:absolute;display:block;width:100%;height:150%;animation:forwards pop-up 0.8s!important;transform:translateY(100%);animation-delay:0.8s!important}@keyframes pop-up{0%{transform:translateY(100%) scale(1)}50%{transform:translateY(-5%) scale(1,1.1)}60%{transform:translateY(5%) scale(1.1,0.9)}100%{transform:translateY(0) scale(1)}}.hl-element{position:absolute!important;background-color:#4f8bae!important}.hl-one{animation:linear forwards element-animation-one 1.5s!important;height:50px;animation-delay:0.4s!important}.hl-two{animation:linear forwards element-animation-two 1.5s!important;width:50px;left:50px;animation-delay:0.6s!important}.hl-three{animation:linear forwards element-animation-three 1.5s!important;height:50px;top:50px;animation-delay:0.8s!important}@keyframes element-animation-one{0%{width:0;left:0}5%{width:100px;left:0}95%{width:100px;left:0}100%{width:0;left:100px}}@keyframes element-animation-two{0%{height:0;top:0}5%{height:100px;top:0}95%{height:100px;top:0}100%{height:0;top:100px}}@keyframes element-animation-three{0%{width:0;right:0}5%{width:100px;right:0}95%{width:100px;right:0}100%{width:0;right:100px}}</style>
+    <script src="{% static '/as-includes/index/js/includes/jquery.min.js' %}"></script>
 </head>
 <body>
     <div class="head-loading">
@@ -44,16 +71,11 @@
             <path fill="transparent" d="M 0 0 h 22 v 33 h -6 v -1 h 1 v -7 h -1 v -2 h 1 v -2 h 1 v -4 h -1 v -2 h -1 v -1 h 1 v -6 h -1 v -1 h -1 v -1 h -1 v 1 h -1 v 1 h -1 v 6 h -2 v -6 h -1 v -1 h -1 v -1 h -1 v 1 h -1 v 1 h -1 v 6 h 1 v 1 h -1 v 2 h -1 v 4 h 1 v 2 h 1 v 2 h -1 v 7 h 1 v 1 h -6 v -33"></path> <path fill="#f5f5f5" fill-rule="evenodd" d="M 7 6 h 1 v 1 h 1 v 1 h 1 v 6 h 2 v -6 h 1 v -1 h 1 v -1 h 1 v 1 h 1 v 1 h 1 v 6 h -1 v 1 h 1 v 2 h 1 v 4 h -1 v 2 h -1 v 2 h 1 v 7 h -1 v 1 h -10 v -1 h -1 v -7 h 1 v -2 h -1 v -2 h -1 v -4 h 1 v -2 h 1 v -1 h -1 v -6 h 1 v -1 h 1 v -1 M 7 17 h 1 v 2 h -1 v -2 M 14 17 h 1 v 2 h -1 v -2 M 10 20 h 2 v 1 h -2 v -1"></path>
             </svg>
         </div>
-        <!--link rel="stylesheet" href="% static '/as-includes/index/css/mycss/head-loading.css' %"/-->
-        <!--script src="% static '/as-includes/index/js/myapp/head-loading.js' %"></script-->
+        <!-- ma5a.com -->
         <script>const HeadLoading=(()=>{const e={animationCycle:2900,checkInterval:100,fadeDuration:500};let t={loadStart:null,cycleStart:null,windowLoaded:false,checkInterval:null},n={container:null,square:null,svg:null,hlElements:[]};function o(){const e=Array.from(n.hlElements).map(e=>e.cloneNode(!0)),t=n.svg.cloneNode(!0);n.hlElements.forEach(e=>e.remove()),n.svg.remove(),e.forEach(e=>n.square.prepend(e)),n.square.append(t),n.hlElements=n.square.querySelectorAll(".hl-element"),n.svg=n.square.querySelector("svg")}function c(){t.cycleStart=Date.now(),t.checkInterval=setInterval(()=>{t.windowLoaded||Date.now()-t.cycleStart>=e.animationCycle&&(o(),t.cycleStart=Date.now())},e.checkInterval)}function i(){t.windowLoaded=!0,clearInterval(t.checkInterval);const o=Date.now()-t.cycleStart,c=Math.max(e.animationCycle-o,0);setTimeout(()=>{n.container.style.transition=`opacity ${e.fadeDuration}ms`,n.container.style.opacity="0",setTimeout(()=>{n.container.style.display="none"},e.fadeDuration),$(".3to1").ready(()=>{initTypeWriter&&setTimeout(initTypeWriter,500)})},c)}function l(){n.container=document.querySelector(".head-loading"),n.square=document.querySelector(".hl-square"),n.hlElements=document.querySelectorAll(".hl-element"),n.svg=document.querySelector(".hl-square > svg"),t.loadStart=Date.now(),c(),"complete"===document.readyState?i():window.addEventListener("load",i)}return{init:l}})();HeadLoading.init();</script>
     </div>
     
 <div class="viewbox">
-    <div itemscope itemtype="http://schema.org/WebPage" style="display:none;">
-        <time itemprop="dateModified" class="date" id="updatetime"
-        datetime="{{t_mod|date:"Y-m-d\TH:i:s+08:00"}}">{{t_mod|date:"Y.m.d H:i"}}</time>
-    </div>
 <div class="scrollbox">
     <style> .container { margin-left: 30px; margin-top: 20px; } </style>
     <link rel="stylesheet" href="{% static '/as-includes/index/css/includes/bootstrap.min.css' %}">
